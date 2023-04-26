@@ -69,9 +69,12 @@ namespace InvestmentDataContext.Entities
         /// </summary>
         public DateTime LoadTime { get; set; } = DateTime.Now;
         /// <summary>
-        ///     
+        ///     ????
         /// </summary>
         public string ReportName { get; set; } = null!;
+        /// <summary>
+        ///     ????
+        /// </summary>
         public ReportPricingType ReportPricing { get; set; }
         /// <summary>
         ///     Corresponding market information regarding the security that represents specific asset.

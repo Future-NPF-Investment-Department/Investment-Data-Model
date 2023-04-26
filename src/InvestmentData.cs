@@ -8,12 +8,18 @@ namespace InvestmentDataContext
 {
     public class InvestmentData : DbContext
     {
-        public InvestmentData() { }
-            
-        
-        public InvestmentData(DbContextOptions<InvestmentData> options) 
-            : base(options) 
-        { 
+        private const string DEFAULTCONNSTRING = "Server=(localdb)\\mssqllocaldb;Database=InvestmentDataBase-Test;Trusted_Connection=True;Integrated Security=True;";
+        private readonly string? _connString;
+
+        public InvestmentData() : base()
+        {
+        }
+
+        public InvestmentData(string connString) : base()
+            => _connString = connString;
+
+        public InvestmentData(DbContextOptions<InvestmentData> options) : base(options)
+        {
         }
 
         public virtual DbSet<ReferenceMarketInfo> Securities { get; set; } = null!;
@@ -24,15 +30,13 @@ namespace InvestmentDataContext
       
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {         
+        {
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder
-                    .UseLazyLoadingProxies(true)
-                    .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=InvestmentDataBase-Test;Trusted_Connection=True;Integrated Security=True;");
-                    // AttachDbFilename=S:\\InvestmentDepartment\\TMP\\КириллоПапка\\C#\\TEST_20 - EF InvestDep Context\\IdepData\\IdepData\\InvestmentDataBase-Test.mdf
-            }
-
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer(_connString ?? DEFAULTCONNSTRING);                    
+            }            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -154,12 +158,6 @@ namespace InvestmentDataContext
                     owned.Property(ai => ai.RateType)
                     .HasColumnName("RateType");
                 });
-
-
-
-
-
-
 
                 entity.HasOne(ai => ai.MarketInfo)
                 .WithMany(si => si.Portfolio)
@@ -294,9 +292,6 @@ namespace InvestmentDataContext
 
 
             });
-            
-
-
 
             modelBuilder.Entity<ReferenceMarketInfo>(entity =>
             {
@@ -318,9 +313,6 @@ namespace InvestmentDataContext
                 .HasColumnName("ISIN");
             });
 
-
-
-
             modelBuilder.Entity<ReportSourceFile>(entity =>
             {
                 entity.ToTable("Reports", "idep");
@@ -329,16 +321,6 @@ namespace InvestmentDataContext
                 entity.Property(rep => rep.PricingType)
                 .HasConversion(pt => pt.ToString(), 
                 str => str.ToEnum<ReportPricingType>());
-
-                //entity.HasMany(src => src.AssetRecords)
-                //.WithOne(av => av.ReportSourceFile)
-                //.HasForeignKey(z => z.ReportName)
-                //.HasPrincipalKey(y => y.FileName);
-
-                //entity.HasMany(src => src.FlowsRecords)
-                //.WithOne(av => av.ReportSourceFile)
-                //.HasForeignKey(z => z.ReportName)
-                //.HasPrincipalKey(y => y.FileName);
             });
         }
     }
