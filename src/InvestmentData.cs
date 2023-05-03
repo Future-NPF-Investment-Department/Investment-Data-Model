@@ -50,6 +50,7 @@ namespace InvestmentDataContext
                 entity.ToTable("Portfolio-TEST2", "idep");
                 entity.HasKey(ai => ai.LoadTime);
 
+                
                 entity.OwnsOne(nav => nav.Security, owned => 
                 {
                     owned.Property(sec => sec.AssetType)
@@ -83,6 +84,7 @@ namespace InvestmentDataContext
                     .HasColumnName("Currency");
                 });
 
+                
                 entity.OwnsOne(nav => nav.Portfolio, owned =>
                 {
                     owned.Property(portf => portf.StrategyName)
@@ -99,6 +101,7 @@ namespace InvestmentDataContext
                     owned.Ignore(portf => portf.RsNumber);
                 });
 
+                
                 entity.OwnsOne(nav => nav.Issuer, owned =>
                 {
                     owned.Property(issuer => issuer.Inn)
@@ -108,6 +111,7 @@ namespace InvestmentDataContext
                     .HasColumnName("Emitent");
                 });
 
+                
                 entity.OwnsOne(nav => nav.Pricing, owned =>
                 {
                     owned.Property(pi => pi.PricingType)
@@ -122,7 +126,7 @@ namespace InvestmentDataContext
                     .HasColumnName("UseFairPricing");
                 });                
 
-
+                
                 entity.OwnsOne(nav => nav.Fund, owned =>
                 {
                     owned.Property(ai => ai.FundName)
@@ -132,6 +136,8 @@ namespace InvestmentDataContext
                     .HasColumnName("AmName");
                 });
 
+
+                
                 entity.OwnsOne(nav => nav.CreditRating, owned =>
                 {
                     owned.Property(ai => ai.InstrumentBestRating)
@@ -147,6 +153,7 @@ namespace InvestmentDataContext
                     .HasColumnName("EmitentRatingAgency");
                 });
 
+                
                 entity.OwnsOne(nav => nav.Interest, owned =>
                 {
                     owned.Property(ai => ai.DepositExpirationDate)
@@ -159,25 +166,32 @@ namespace InvestmentDataContext
                     .HasColumnName("RateType");
                 });
 
+
+                
+                entity.Property(ai => ai.Isin)
+                .HasColumnName("ISIN");
+
+                
+                entity.Property(ai => ai.AccountingMethod)
+                .HasConversion(am => am.ToString(),
+                am => am.ToEnum<AccountingMethod>());
+
+                
+                entity.Property(av => av.ReportName)
+                .HasColumnName("SourceFile");
+
+                
+                entity.Property(av => av.ReportPricing)
+                .HasConversion(rp => rp.ToString(),
+                rpstr => rpstr.ToEnum<ReportPricingType>())
+                .HasColumnName("SourcePricing");
+
+
                 entity.HasOne(ai => ai.MarketInfo)
                 .WithMany(si => si.Portfolio)
                 .HasForeignKey(ai => ai.Isin)
                 .HasPrincipalKey(si => si.Isin);
 
-
-                entity.Property(ai => ai.AccountingMethod)
-                .HasConversion(am => am.ToString(),
-                am => am.ToEnum<AccountingMethod>());
-
-
-                entity.Property(ai => ai.Isin)
-                .HasColumnName("ISIN");
-
-                entity.Property(av => av.ReportName)
-                .HasColumnName("SourceFile");
-
-                entity.Property(av => av.ReportPricing)
-                .HasColumnName("SourcePricing");
 
                 entity.HasOne(av => av.Report)
                 .WithMany(src => src.AssetRecords)
@@ -190,13 +204,8 @@ namespace InvestmentDataContext
             modelBuilder.Entity<AssetFlow>(entity =>
             {
                 entity.ToTable("Flows-TEST2", "idep");
-                entity.HasKey(flow => flow.LoadTime);
+                entity.HasKey(flow => flow.LoadTime);               
 
-                entity.Property(flow => flow.Id)
-               .HasColumnName("FlowId");
-
-                entity.Property(flow => flow.Date)
-               .HasColumnName("PayDate");
 
                 entity.OwnsOne(flow => flow.Fund, owned =>
                 {
@@ -206,6 +215,7 @@ namespace InvestmentDataContext
                     owned.Property(ai => ai.AmName)
                     .HasColumnName("AmName");
                 });
+
 
                 entity.OwnsOne(flow => flow.Portfolio, owned =>
                 {
@@ -224,11 +234,13 @@ namespace InvestmentDataContext
                     .HasColumnName("RsNumber");
                 });
 
+
                 entity.OwnsOne(flow => flow.Issuer, owned =>
                 {
                     owned.Ignore(issuer => issuer.Inn);
                     owned.Ignore(issuer => issuer.Name);
                 });
+
 
                 entity.OwnsOne(flow => flow.Security, owned =>
                 {
@@ -269,9 +281,19 @@ namespace InvestmentDataContext
                     .HasColumnName("BrokerComission");
                 });
 
+
+                entity.Property(flow => flow.Id)
+               .HasColumnName("FlowId");
+
+
+                entity.Property(flow => flow.Date)
+               .HasColumnName("PayDate");
+
+
                 entity.Property(flow => flow.TransType)
                 .HasConversion(tt => tt.ToString(),
                 str => str.ToEnum<TransType>());
+
 
                 entity.HasOne(fi => fi.MarketInfo)
                 .WithMany(si => si.Flows)
@@ -282,8 +304,6 @@ namespace InvestmentDataContext
                 entity.Property(av => av.ReportName)
                 .HasColumnName("SourceFile");
 
-                entity.Property(av => av.ReportPricing)
-                .HasColumnName("SourcePricing");
 
                 entity.HasOne(av => av.Report)
                 .WithMany(src => src.FlowsRecords)

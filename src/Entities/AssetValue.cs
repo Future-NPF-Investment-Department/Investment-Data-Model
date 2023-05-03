@@ -69,17 +69,26 @@ namespace InvestmentDataContext.Entities
         /// </summary>
         public DateTime LoadTime { get; set; } = DateTime.Now;
         /// <summary>
-        ///     ????
+        ///     Report source file name.
         /// </summary>
         public string ReportName { get; set; } = null!;
         /// <summary>
-        ///     ????
+        ///     Prices used in report source file.
         /// </summary>
         public ReportPricingType ReportPricing { get; set; }
         /// <summary>
-        ///     Corresponding market information regarding the security that represents specific asset.
+        ///     Corresponding market information regarding the security that represents specific asset in the flow.   
         /// </summary>
+        /// <remarks>
+        ///     Reflects one-to-many relationship (navigation property).
+        /// </remarks>
         public override ReferenceMarketInfo MarketInfo { get; set; } = null!;
+        /// <summary>
+        ///     Report source file information.
+        /// </summary>
+        /// <remarks>
+        ///     Reflects one-to-many relationship (navigation property).
+        /// </remarks>
         public override ReportSourceFile Report { get; set; } = null!;
     }
 }
