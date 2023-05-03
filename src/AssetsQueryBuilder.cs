@@ -1,5 +1,6 @@
 ﻿using InvestmentDataContext.Entities;
 using Microsoft.EntityFrameworkCore;
+using InvestmentDataContext.Classifications;
 
 namespace InvestmentDataContext
 {
@@ -10,6 +11,16 @@ namespace InvestmentDataContext
 
         private protected override AssetsQueryBuilder Builder
             => this;
+
+
+        public AssetsQueryBuilder WithAccountingMethod(AccountingMethod? method)
+        {
+            _query = (method is not null)
+                ? _query.Where(q => q.AccountingMethod == method)
+                : _query;
+
+            return this;
+        }
 
         public AssetsQueryBuilder WithRealPrices()
         {
