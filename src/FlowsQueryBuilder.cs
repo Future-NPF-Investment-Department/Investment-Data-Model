@@ -33,10 +33,10 @@ namespace InvestmentDataContext
             return this;
         }
 
-        public FlowsQueryBuilder WithTransType(TransType? transType)
+        public FlowsQueryBuilder WithTransType(params TransType[]? transTypes)
         {
-            _query = (transType is not null)
-               ? _query.Where(q => q.TransType == transType)
+            _query = (transTypes is not null)
+               ? _query.Where(q => transTypes.Contains(q.TransType))
                : _query;
             return this;
         }
