@@ -6,7 +6,6 @@ namespace InvestmentDataContext.Classifications
     /// </summary>
     public enum RiskType
     {
-        Indifferent,
         NonRisk,
         Risk
     }

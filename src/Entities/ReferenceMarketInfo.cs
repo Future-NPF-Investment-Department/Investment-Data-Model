@@ -1,4 +1,7 @@
-﻿using InvestmentDataContext.Classifications;
+﻿#pragma warning disable IDE0090
+
+using InvestmentDataContext.Classifications;
+using RuDataAPI.Extensions;
 
 namespace InvestmentDataContext.Entities
 {
@@ -7,6 +10,26 @@ namespace InvestmentDataContext.Entities
     /// </summary>
     public record ReferenceMarketInfo
     {
+        public ReferenceMarketInfo() { }
+
+        private ReferenceMarketInfo(EfirSecurity secinfo, AssetClass assetClass, RiskType riskType)
+        {
+            Isin = secinfo.Isin;
+            Name = secinfo.ShortName;
+            IssuerName = secinfo.IssuerName;
+            AssetClass = assetClass;
+            FaceValue = secinfo.Notional;
+            Currency = secinfo.Currency;
+            CouponType = secinfo.CouponType;
+            CouponPeriod = secinfo.CouponPeriod;
+            Reference = secinfo.CouponReferenceRateName;
+            MaturityDate = secinfo.MaturityDate;
+            Status = secinfo.Status;
+            IssueVolume = secinfo.IssueVolume;
+            IssuerSector = secinfo.IssueSector;
+            RiskType = riskType;
+        }
+
         public string? Isin { get; set; }
         public string? Name { get; set; }
         public string? IssuerName { get; set; }
@@ -24,5 +47,8 @@ namespace InvestmentDataContext.Entities
         public RiskType RiskType { get; set; }
         public virtual ICollection<AssetValue> Portfolio { get; set; } = null!;
         public virtual ICollection<AssetFlow> Flows { get; set; } = null!;
-    }
+
+        public static ReferenceMarketInfo New(EfirSecurity secinfo, AssetClass assetClass, RiskType riskType)
+            => new ReferenceMarketInfo(secinfo, assetClass, riskType);
+    }    
 }

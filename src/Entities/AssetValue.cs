@@ -61,7 +61,7 @@ namespace InvestmentDataContext.Entities
         /// </summary>
         public AccountingMethod AccountingMethod { get; set; }
         /// <summary>
-        ///     Asset pricing information.
+        ///     Report-specific pricing information for this asset.
         /// </summary>
         public PricingInfo Pricing { get; set; } = null!;
         /// <summary>

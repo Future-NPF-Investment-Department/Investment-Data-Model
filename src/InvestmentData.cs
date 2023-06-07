@@ -3,6 +3,7 @@ using InvestmentDataContext.Entities;
 using InvestmentDataContext.Classifications;
 using InvestmentDataContext.SqlServer;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace InvestmentDataContext
 {
@@ -26,6 +27,7 @@ namespace InvestmentDataContext
         public virtual DbSet<AssetFlow> Flows { get; set; } = null!;
         public virtual DbSet<AssetValue> Assets { get; set; }
         public virtual DbSet<ReportSourceFile> Reports { get; set; } = null!;
+        public virtual DbSet<PriceFixationInfo> FixationPeriods { get; set; } = null!;
 
       
 
@@ -35,12 +37,14 @@ namespace InvestmentDataContext
             {
                 optionsBuilder
                     .UseLazyLoadingProxies()
-                    .UseSqlServer(_connString ?? DEFAULTCONNSTRING);                    
+                    .UseSqlServer(_connString ?? DEFAULTCONNSTRING);
+
+                //optionsBuilder.LogTo(Console.WriteLine);
             }            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        {            
             modelBuilder.HasDbFunction(() => IdepSqlFunctions.GetFlowDirection(default))
                 .HasSchema("idep");
 
@@ -114,10 +118,10 @@ namespace InvestmentDataContext
                 
                 entity.OwnsOne(nav => nav.Pricing, owned =>
                 {
-                    owned.Property(pi => pi.PricingType)
+                    owned.Property(pi => pi.PriceFixation)
                     .HasConversion(pt => pt.ToString(),
-                        str => str.ToEnum<PricingType>())
-                    .HasColumnName("PricingType");
+                        str => str.ToEnum<PriceFixationKind>())
+                    .HasColumnName("PriceFixation");                   
 
                     owned.Property(ai => ai.UseRealPricing)
                     .HasColumnName("UseRealPricing");
@@ -199,7 +203,6 @@ namespace InvestmentDataContext
                 .HasPrincipalKey(src => src.FileName);
 
             });
-
 
             modelBuilder.Entity<AssetFlow>(entity =>
             {
@@ -336,11 +339,24 @@ namespace InvestmentDataContext
             modelBuilder.Entity<ReportSourceFile>(entity =>
             {
                 entity.ToTable("Reports", "idep");
-                entity.HasKey(rep => rep.FileName);
+                entity.HasKey(rep => rep.Id);
+                entity.HasAlternateKey(rep => rep.FileName);                
 
                 entity.Property(rep => rep.PricingType)
                 .HasConversion(pt => pt.ToString(), 
                 str => str.ToEnum<ReportPricingType>());
+
+                entity.Property(rep => rep.Destination)
+                .HasConversion(pt => pt.ToString(),
+                str => str.ToEnum<SqlTargetTable>());
+
+                entity.Ignore(rep => rep.CsvMapping);
+            });
+
+            modelBuilder.Entity<PriceFixationInfo>(entity =>
+            {
+                entity.ToTable("PriceFixations", "idep");
+                entity.HasKey(pfi => new { pfi.FundName, pfi.FixationDate });
             });
         }
     }

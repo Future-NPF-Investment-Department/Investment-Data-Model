@@ -1,6 +1,6 @@
 ﻿namespace InvestmentDataContext
 {
-    public static class IdepDataExtensions
+    public static class InvestmentDataExtensions
     {
         public static TEnum ToEnum<TEnum>(this string input) where TEnum : Enum
         {

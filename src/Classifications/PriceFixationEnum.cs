@@ -12,7 +12,7 @@ namespace InvestmentDataContext.Classifications
     /// <summary>
     ///     Represents pricing type for an asset in portfolio. 
     /// </summary>
-    public enum PricingType
+    public enum PriceFixationKind
     {
         NonFixed,
         Fixed

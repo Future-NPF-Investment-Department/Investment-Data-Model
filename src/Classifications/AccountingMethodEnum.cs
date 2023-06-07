@@ -8,6 +8,8 @@ namespace InvestmentDataContext.Classifications
     {
         None,
         Fair,
-        Amortized
+        HoldToMaturity,
+        Amortized,
+
     }
 }

@@ -31,7 +31,7 @@ namespace InvestmentDataContext.Entities
         /// <summary>
         ///     Asset ISIN code (if any).
         /// </summary>
-        public override string? Isin { get; set; }
+        public override string? Isin { get; set; } = null!;
         /// <summary>
         ///     Date of flow originated.
         /// </summary>
