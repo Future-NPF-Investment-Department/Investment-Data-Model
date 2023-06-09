@@ -12,9 +12,11 @@ namespace InvestmentDataContext.Entities
     /// </summary>
     public class ReportSourceFile : IEquatable<ReportSourceFile>
     {
+        private readonly string _fileDirecory;
         public ReportSourceFile() { }
         private ReportSourceFile(FileInfo file, string provider, ReportPricingType pricing, SqlTargetTable destination) 
-        { 
+        {
+            _fileDirecory = file.DirectoryName ?? string.Empty;
             FileName = file.Name;
             FullPath = file.FullName;
             PricingType = pricing;
@@ -111,7 +113,8 @@ namespace InvestmentDataContext.Entities
                 || (this.ReportDate == other.ReportDate)
                 & (this.Destination == other.Destination)
                 & (this.PricingType == other.PricingType)
-                & (this.Provider == other.Provider);
+                & (this.Provider == other.Provider)
+                & (this._fileDirecory == other._fileDirecory);
         }
     }
 }
