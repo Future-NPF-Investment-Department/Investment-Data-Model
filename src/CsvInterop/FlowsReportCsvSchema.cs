@@ -1,11 +1,7 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
-using CsvHelper.TypeConversion;
 using InvestmentDataContext.Classifications;
 using InvestmentDataContext.Entities;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Xml.Serialization;
 
 namespace InvestmentDataContext.CsvInterop
 {
@@ -32,8 +28,6 @@ namespace InvestmentDataContext.CsvInterop
                 .Convert(args => GetStrategyName(args, "Номер и дата договора", "Наименование портфеля"));
 
             _ = Map(af => af.Fund.FundName)
-                //.Name("Наименование фонда")
-                //.Optional()
                 .Convert(args => GetCleanFundName(args, "Наименование фонда", "АО МНПФ БОЛЬШОЙ"));                
 
             _ = Map(af => af.Security.ShortName)

@@ -63,13 +63,16 @@ namespace InvestmentDataContext.CsvInterop
                 .Name("Валюта");
 
             _ = Map(av => av.Amount)
-                .Name("Количество (без учета РЕПО)", "Количество");
+                //.Name("Количество (без учета РЕПО)", "Количество")
+                .Convert(args => GetDoubleValue(args, "Количество (без учета РЕПО)"));
 
             _ = Map(av => av.NetValue)
-                .Name("Сумма без НКД", "Сумма");
+                //.Name("Сумма без НКД", "Сумма")
+                .Convert(args => GetDoubleValue(args, "Сумма без НКД"));
 
             _ = Map(av => av.AccruedInterest)
-                .Name("НКД, руб.", "НКД");
+                //.Name("НКД, руб.", "НКД")
+                .Convert(args => GetDoubleValue(args, "НКД, руб."));
 
             _ = Map(av => av.FullValue)
                 .Name("Сумма с НКД, руб.", "Сумма без НКД")
@@ -79,7 +82,8 @@ namespace InvestmentDataContext.CsvInterop
                 .Name("Дата погашения депозита");
 
             _ = Map(av => av.Interest.CurrentRate)
-                .Name("Текущая процентная ставка по депозиту", "% ставка");
+                //.Name("Текущая процентная ставка по депозиту", "% ставка");
+                .Convert(args => GetDoubleValue(args, "Текущая процентная ставка по депозиту"));
 
             _ = Map(av => av.Interest.RateType)
                 .Name("Вид процентной ставки по депозиту");
@@ -116,6 +120,22 @@ namespace InvestmentDataContext.CsvInterop
             _ = Map(av => av.LoadTime).Ignore();
 
             report.CsvMapping = this;
+        }
+
+        private double GetDoubleValue(ConvertFromStringArgs data, string csvField)
+        {
+            bool isSuccess = data.Row.TryGetField(csvField, out double value);
+            if (isSuccess)
+            {
+                return value;
+            }
+            else
+            {
+                data.Row.TryGetField(csvField, out string? strValue);
+                if (strValue is not null) 
+                    return double.Parse(strValue);
+                return .0;
+            }
         }
 
         private PensionPropertyType GetPensionPropertyType(ConvertFromStringArgs data, string csvField)
@@ -169,7 +189,7 @@ namespace InvestmentDataContext.CsvInterop
             
             if (isSuccess)
             {
-                return (_mapper.RiskIsins.Keys.Contains(value!))
+                return _mapper.RiskIsins.ContainsKey(value!) 
                     ? RiskType.Risk
                     : RiskType.NonRisk;
             }
