@@ -48,23 +48,21 @@ namespace InvestmentDataContext
             if (_credentials is null)
                 throw new Exception("EFIR credentials are not specified.");
 
+            using var context = new InvestmentData(_connstr);
+            var loadedReports = context.Reports;
+            var loadedReportNames = loadedReports.Select(rep => rep.FileName).ToHashSet();
+            if (loadedReportNames.Contains(reportFile.Name)) return;                    
+
+            var fixPeriods = context.FixationPeriods;
+            var knownIsins = context.Securities.Select(sec => sec.Isin!).ToHashSet();
+            var newSecurities = new List<ReferenceMarketInfo>();
+
             var target = loadingContext.SqlTargetTable;     // target sql table to load to
             var pricing = loadingContext.ReportPricingType; // fair or real prices in report
             var provider = loadingContext.FileProvider;     // asset management name
             var mapper = loadingContext.Mappings;           // dicts for csv report mappings
             var config = loadingContext.CsvConfiguration;   // csv read-write config
             var encoding = loadingContext.Encoding;         // encoding of csv report
-
-            using var context = new InvestmentData(_connstr);
-            using var efir = new EfirClient(_credentials);
-
-            var fixPeriods = context.FixationPeriods;
-            var loadedReports = context.Reports.ToList();
-            var loadedReportNames = loadedReports.Select(rep => rep.FileName).ToHashSet();
-            var knownIsins = context.Securities.Select(sec => sec.Isin!).ToHashSet();
-            var newSecurities = new List<ReferenceMarketInfo>();
-
-            if (loadedReportNames.Contains(reportFile.Name)) return;            
 
             IReportSourceFileVisitor visitor = target is PORTF
                     ? new PortfolioReportCsvSchema(mapper)
@@ -117,6 +115,7 @@ namespace InvestmentDataContext
                 throw new Exception(message);
             }
 
+            using var efir = new EfirClient(_credentials);
             foreach (var rec in records)
             {
                 // enriching assets from portfolio report with pricing information

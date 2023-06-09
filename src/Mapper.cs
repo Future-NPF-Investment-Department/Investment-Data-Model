@@ -140,6 +140,7 @@ namespace InvestmentDataContext
             FlowTransitionMapping.Add("перевод между счетами - поступление средств", TransType.InternalCashFlow);
 
             // adding accounting method mapping
+            AccountingMethodMapping.Add(string.Empty, AccountingMethod.None);
             AccountingMethodMapping.Add("не применимо", AccountingMethod.None);
             AccountingMethodMapping.Add("по справедливой", AccountingMethod.Fair);
             AccountingMethodMapping.Add("по справедливой через пу", AccountingMethod.Fair);
