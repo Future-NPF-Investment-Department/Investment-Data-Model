@@ -7,10 +7,17 @@
 -- ================================================================================================================
 
 CREATE TABLE [idep].[Reports] (
-    [FileName]    NVARCHAR (450) NOT NULL,
-    [Provider]    NVARCHAR (MAX) NOT NULL,
-    [FullPath]    NVARCHAR (MAX) NOT NULL,
-    [ReportDate]  DATETIME2 (7)  NOT NULL,
-    [PricingType] NVARCHAR (MAX) NOT NULL,
-    [Destination] NVARCHAR (MAX) NOT NULL
+    [Provider]		  varchar(50)		not null,
+	[FileName]		  varchar(100)		not null   primary key,
+	[FullPath]		  varchar(250)		not null,
+	[ReportDate]	  date				not null,
+	[RecordsNumber]   int				not null,
+	[PricingType]	  varchar(50)		not null,
+	[Destination]	  varchar(50)		not null,
+	[LoadTime]		  datetime2			not null
 );
+
+GO
+
+INSERT INTO [idep].[Reports]
+VALUES ('Region Trust', 'Undefined', 'Undefined', '1900-01-01', 0,'RealPrices', 'Portfolio', '1900-01-01 00:00:00.0000000')
