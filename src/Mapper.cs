@@ -42,6 +42,8 @@ namespace InvestmentDataContext
             AssetTypeMapping.Add("облигации корпоративные", AssetType.CorporateBond);
             AssetTypeMapping.Add("облигации корпоративные рф", AssetType.CorporateBond);
             AssetTypeMapping.Add("облигации государственных корпораций", AssetType.CorporateBond);
+            AssetTypeMapping.Add("облигации прочих резидентов", AssetType.CorporateBond);
+            AssetTypeMapping.Add("облигации кредитных организаций - резидентов", AssetType.CorporateBond);
             AssetTypeMapping.Add("облигации нфо рф", AssetType.CorporateBond);
             AssetTypeMapping.Add("облигации российских хоз. обществ", AssetType.CorporateBond);
             AssetTypeMapping.Add("облигации банковские рф", AssetType.CorporateBond);
@@ -53,6 +55,7 @@ namespace InvestmentDataContext
             AssetTypeMapping.Add("дебиторская задолженность", AssetType.Receivables);
             AssetTypeMapping.Add("дебиторская задолженность по ценным бумагам", AssetType.Receivables);
             AssetTypeMapping.Add("облигации государственные рф", AssetType.GovernmentBond);
+            AssetTypeMapping.Add("облигации органов исполнительной власти рф и банка россии", AssetType.GovernmentBond);
             AssetTypeMapping.Add("государственные цб", AssetType.GovernmentBond);
             AssetTypeMapping.Add("гцб рф", AssetType.GovernmentBond);
             AssetTypeMapping.Add("гос. ц/б  рф", AssetType.GovernmentBond);
@@ -80,12 +83,15 @@ namespace InvestmentDataContext
             AssetClassMapping.Add("облигации корпоративные", AssetClass.Bonds);
             AssetClassMapping.Add("облигации корпоративные рф", AssetClass.Bonds);
             AssetClassMapping.Add("облигации государственных корпораций", AssetClass.Bonds);
+            AssetClassMapping.Add("облигации органов исполнительной власти рф и банка россии", AssetClass.Bonds);
             AssetClassMapping.Add("облигации нфо рф", AssetClass.Bonds);
             AssetClassMapping.Add("облигации российских хоз. обществ", AssetClass.Bonds);
+            AssetClassMapping.Add("облигации кредитных организаций - резидентов", AssetClass.Bonds);
             AssetClassMapping.Add("облигации банковские рф", AssetClass.Bonds);
             AssetClassMapping.Add("облигации субъектов рф", AssetClass.Bonds);
             AssetClassMapping.Add("облигации муниципальные", AssetClass.Bonds);
             AssetClassMapping.Add("гос.облигации субъектов рф", AssetClass.Bonds);
+            AssetClassMapping.Add("облигации прочих резидентов", AssetClass.Bonds);
             AssetClassMapping.Add("облигации субфедеральные", AssetClass.Bonds);
             AssetClassMapping.Add("кредиторская задолженность", AssetClass.Cash);
             AssetClassMapping.Add("дебиторская задолженность", AssetClass.Cash);
@@ -182,7 +188,7 @@ namespace InvestmentDataContext
         /// <summary>
         ///     List of ISIN's that are considered to be risk assets.
         /// </summary>
-        public Dictionary<string, string> RiskIsins { get; set; } = new();
+        public Dictionary<string, RiskType> RiskIsins { get; set; } = new();
 
     }
 }

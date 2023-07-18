@@ -1,10 +1,15 @@
-﻿using CsvHelper;
+﻿#pragma warning disable IDE0090
+
+using CsvHelper;
 using InvestmentDataContext.Classifications;
 using InvestmentDataContext.Entities;
 using InvestmentDataContext.Entities.Owned;
 using InvestmentDataContext.CsvInterop;
 using RuDataAPI;
 using RuDataAPI.Extensions;
+
+using InvestmentDataContext.src.CsvInterop;
+using CsvHelper.Configuration;
 
 namespace InvestmentDataContext
 {
@@ -72,7 +77,7 @@ namespace InvestmentDataContext
             Notify?.Invoke($"Processing report: {report.FileName}");
             report.AcceptConfigurer(visitor);
 
-            using var reader = new StreamReader(report.FullPath, encoding);
+            using var reader = new StreamReader(reportFile.FullName, encoding); //report.FileDirectoryName
             using var csvreader = new CsvReader(reader, config);
 
             csvreader.Context.RegisterClassMap(report.CsvMapping);
@@ -103,18 +108,29 @@ namespace InvestmentDataContext
                     : null;
             }
 
+
+
             // report dublicate validation
-            if (loadedReports.Contains(report) && report.ReportDate is not null)
+            if (report.ReportDate is not null)
             {
-                string message = $"Error while loading report '{report.FileName}': " +
-                    $"report with same parameters already exists in database:\n" +
-                    $"Report provider: {report.Provider}\n" +
-                    $"Report type: {report.Destination}\n" +
-                    $"Report date: {report.ReportDate?.ToShortDateString()}\n" +
-                    $"Report pricing: {report.PricingType}\n";
-                throw new Exception(message);
+                foreach (var rep in loadedReports)
+                {
+                    if (report.Equals(rep))
+                    {
+                        string message = $"Error for '{report.FileName}': " +
+                            $"report with same parameters already exists in database:\n" +
+                            $"Report provider: {rep.Provider}\n" +
+                            $"Report type: {rep.Destination}\n" +
+                            $"Report date: {rep.ReportDate?.ToShortDateString()}\n" +
+                            $"Report pricing: {rep.PricingType}\n" +
+                            $"check id {rep.Id}";
+                        Warning?.Invoke(message);
+                        break;
+                    }
+                }
             }
 
+            
             using var efir = new EfirClient(_credentials);
             foreach (var rec in records)
             {
@@ -134,6 +150,7 @@ namespace InvestmentDataContext
                     EfirSecurity sec = await efir.GetSecurityData(rec.Isin);
                     ReferenceMarketInfo info = ReferenceMarketInfo.New(sec, rec.Security.AssetClass, rec.Security.RiskType);
                     newSecurities.Add(info);
+                    knownIsins.Add(rec.Isin);
                 }
             }
             
@@ -180,6 +197,14 @@ namespace InvestmentDataContext
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static AssetsQueryBuilder NewAssetsQuery(InvestmentData context)        
+            => new AssetsQueryBuilder(context);
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
         public static AssetsQueryBuilder NewAssetsQuery()
@@ -187,8 +212,16 @@ namespace InvestmentDataContext
             if (_connstr is null)
                 throw new Exception("Connection string is not specified");
             using var context = new InvestmentData(_connstr);
-            return new AssetsQueryBuilder(context);
+            return NewAssetsQuery(context);
         }
+        
+        /// <summary>
+        ///     
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static FlowsQueryBuilder NewFlowsQuery(InvestmentData context)
+            => new FlowsQueryBuilder(context);
 
         /// <summary>
         /// 
@@ -200,8 +233,9 @@ namespace InvestmentDataContext
             if (_connstr is null)
                 throw new Exception("Connection string is not specified");
             using var context = new InvestmentData(_connstr);
-            return new FlowsQueryBuilder(context);
+            return NewFlowsQuery(context);
         }
+
 
         /// <summary>
         /// 

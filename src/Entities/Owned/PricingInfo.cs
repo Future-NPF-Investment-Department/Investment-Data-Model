@@ -55,8 +55,8 @@ namespace InvestmentDataContext.Entities.Owned
 
             if (report.PricingType is ReportPricingType.FairPrices)
             {
-                int index = report.FullPath.IndexOf(report.FileName);
-                string folderPath = report.FullPath.Remove(index, report.FileName.Length);
+                int index = report.FileDirectoryName.IndexOf(report.FileName);
+                string folderPath = report.FileDirectoryName.Remove(index, report.FileName.Length);
                 string message = $"Cannot define pricing parameters for report '{report.FileName}'.\n" +
                     $"Report is considered to contain fair priced data however report date {report.ReportDate} is not associated with any known price fixation period.\n" +
                     $"Check your price fixation periods or report location: {folderPath} should contain only fair priced reports.";

@@ -10,15 +10,15 @@ namespace InvestmentDataContext.Entities
     /// <summary>
     ///     Represents report source file (.csv) information.
     /// </summary>
-    public class ReportSourceFile : IEquatable<ReportSourceFile>
+    public class ReportSourceFile : IEquatable<ReportSourceFile?>
     {
-        private readonly string _fileDirecory;
+        //private readonly string _fileDirecory;
         public ReportSourceFile() { }
         private ReportSourceFile(FileInfo file, string provider, ReportPricingType pricing, SqlTargetTable destination) 
         {
-            _fileDirecory = file.DirectoryName ?? string.Empty;
+            //_fileDirecory = file.DirectoryName ?? string.Empty;
             FileName = file.Name;
-            FullPath = file.FullName;
+            FileDirectoryName = file.DirectoryName!;
             PricingType = pricing;
             Provider = provider;
             Destination = destination;
@@ -39,7 +39,7 @@ namespace InvestmentDataContext.Entities
         /// <summary>
         ///     File name including full path.
         /// </summary>
-        public string FullPath { get; set; } = null!;
+        public string FileDirectoryName { get; set; } = null!;
         /// <summary>
         ///     Date on which the report was compiled.
         /// </summary>
@@ -105,16 +105,45 @@ namespace InvestmentDataContext.Entities
             visitor.ConfigureReportCsvSchema(this);
         }
 
+        public override bool Equals(object? obj)
+        {
+            return Equals(obj as ReportSourceFile);
+        }
+
         public bool Equals(ReportSourceFile? other)
         {
-            if (other is null) return false;
-
-            return this.FileName == other.FileName
-                || (this.ReportDate == other.ReportDate)
-                & (this.Destination == other.Destination)
-                & (this.PricingType == other.PricingType)
-                & (this.Provider == other.Provider)
-                & (this._fileDirecory == other._fileDirecory);
+            return other is not null &&
+                   FileDirectoryName == other.FileDirectoryName &&
+                   ReportDate == other.ReportDate &&
+                   PricingType == other.PricingType &&
+                   Destination == other.Destination;
         }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(FileDirectoryName, ReportDate, PricingType, Destination);
+        }
+
+        //public static bool operator ==(ReportSourceFile? left, ReportSourceFile? right)
+        //{
+        //    return EqualityComparer<ReportSourceFile>.Default.Equals(left, right);
+        //}
+
+        //public static bool operator !=(ReportSourceFile? left, ReportSourceFile? right)
+        //{
+        //    return !(left == right);
+        //}
+
+        //public bool Equals(ReportSourceFile other)
+        //{
+        //    if (other is null) return false;
+
+        //    return this.FileName == other.FileName
+        //        || ((this.ReportDate == other.ReportDate)
+        //        & (this.Destination == other.Destination)
+        //        & (this.PricingType == other.PricingType)
+        //        & (this.Provider == other.Provider)
+        //        & (this._fileDirecory == other._fileDirecory));
+        //}
     }
 }

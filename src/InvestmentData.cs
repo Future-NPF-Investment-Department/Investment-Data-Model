@@ -53,7 +53,7 @@ namespace InvestmentDataContext
             {
                 entity.ToTable("Portfolio-TEST2", "idep");
                 entity.HasKey(ai => ai.LoadTime);
-
+                
                 
                 entity.OwnsOne(nav => nav.Security, owned => 
                 {
@@ -340,7 +340,10 @@ namespace InvestmentDataContext
             {
                 entity.ToTable("Reports", "idep");
                 entity.HasKey(rep => rep.Id);
-                entity.HasAlternateKey(rep => rep.FileName);                
+                entity.HasAlternateKey(rep => rep.FileName);
+
+                entity.Property(rep => rep.FileDirectoryName)
+                .HasColumnName("FullPath");
 
                 entity.Property(rep => rep.PricingType)
                 .HasConversion(pt => pt.ToString(), 
