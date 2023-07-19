@@ -9,7 +9,7 @@ namespace InvestmentDataContext
 {
     public class InvestmentData : DbContext
     {
-        private const string DEFAULTCONNSTRING = "Server=(localdb)\\mssqllocaldb;Database=InvestmentDataBase-Test;Trusted_Connection=True;Integrated Security=True;";
+        public const string DFLTCONNSTR = "Server=(localdb)\\mssqllocaldb;Database=InvestmentDataBase-Test;Trusted_Connection=True;Integrated Security=True;";
         private readonly string? _connString;
 
         public InvestmentData() : base()
@@ -37,7 +37,7 @@ namespace InvestmentDataContext
             {
                 optionsBuilder
                     .UseLazyLoadingProxies()
-                    .UseSqlServer(_connString ?? DEFAULTCONNSTRING);
+                    .UseSqlServer(_connString ?? DFLTCONNSTR);
 
                 //optionsBuilder.LogTo(Console.WriteLine);
             }            
