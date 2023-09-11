@@ -1,5 +1,4 @@
 ﻿using InvestmentDataContext.Classifications;
-using InvestmentDataContext.CsvInterop;
 using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.SqlServer.Server;
@@ -95,14 +94,6 @@ namespace InvestmentDataContext.Entities
         {
             if (file.Directory is null) throw new Exception("");
             return new ReportSourceFile(file, fileProvifer, pricing, destination);
-        }
-
-        /// <summary>
-        ///     Accepts <see cref="IReportSourceFileVisitor"/> to configure csv schema for report.
-        /// </summary>
-        public void AcceptConfigurer(IReportSourceFileVisitor visitor)
-        {
-            visitor.ConfigureReportCsvSchema(this);
         }
 
         public override bool Equals(object? obj)

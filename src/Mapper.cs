@@ -16,14 +16,14 @@ namespace InvestmentDataContext
         public Mapper()
         {
             // adding pension property mapping
-            PensionPropertyMapping.Add("ПН", PensionPropertyType.PN);
-            PensionPropertyMapping.Add("ВР", PensionPropertyType.PN);
-            PensionPropertyMapping.Add("СВ", PensionPropertyType.PN);
-            PensionPropertyMapping.Add("РОПС", PensionPropertyType.PN);
-            PensionPropertyMapping.Add("ПН граждан, переданные через НПФ", PensionPropertyType.PN);
-            PensionPropertyMapping.Add("ПР", PensionPropertyType.PR);
-            PensionPropertyMapping.Add("СР", PensionPropertyType.PR);
-            PensionPropertyMapping.Add("СС", PensionPropertyType.SS);
+            PensionPropertyMapping.Add("пн", PensionPropertyType.PN);
+            PensionPropertyMapping.Add("вр", PensionPropertyType.PN);
+            PensionPropertyMapping.Add("св", PensionPropertyType.PN);
+            PensionPropertyMapping.Add("ропс", PensionPropertyType.PN);
+            PensionPropertyMapping.Add("пн граждан, переданные через нпф", PensionPropertyType.PN);
+            PensionPropertyMapping.Add("пр", PensionPropertyType.PR);
+            PensionPropertyMapping.Add("ср", PensionPropertyType.PR);
+            PensionPropertyMapping.Add("сс", PensionPropertyType.SS);
 
             // adding asset type mapping
             AssetTypeMapping.Add("деньги", AssetType.Cash);
