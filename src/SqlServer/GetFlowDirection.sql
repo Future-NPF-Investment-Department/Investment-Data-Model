@@ -3,11 +3,12 @@
 -- Author:				Kirill Nestrugin
 -- Create date:			03.03.2022
 -- Description:			Returns int (1 or -1) representation of flow direction based on flow string representation.
--- Execution example:	SELECT [asrm_data].[idep].[GetFlowDirection]('CashInflow') AS [FlowDirection]
+-- Execution example:	SELECT [<schemaName>].[GetFlowDirection]('CashInflow') AS [FlowDirection]
+-- ATTENTION:			Do not forget change schema name
 -- ================================================================================================================
 
 
-CREATE FUNCTION [idep].[GetFlowDirection] (@TransitionType varchar(50)) RETURNS FLOAT AS
+CREATE FUNCTION [schemaName].[GetFlowDirection] (@TransitionType varchar(50)) RETURNS FLOAT AS
 BEGIN
 	DECLARE @retval FLOAT
 	SELECT @retval = CASE	
