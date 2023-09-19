@@ -1,8 +1,7 @@
 ﻿using CsvHelper.Configuration;
-using InvestmentDataContext.Entities;
+using InvestmentData.Context.Entities;
 
-
-namespace InvestmentDataContext.CsvIO.CsvSchemas
+namespace InvestmentData.CsvIO.CsvSchemas
 {
 
     public class CsvSchema<T> : ClassMap<T> 

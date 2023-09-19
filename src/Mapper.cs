@@ -1,9 +1,7 @@
-﻿using InvestmentDataContext.Classifications;
+﻿using InvestmentData.Classifications;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System.Diagnostics.Contracts;
 
-namespace InvestmentDataContext
+namespace InvestmentData
 {
     /// <summary>
     ///     Represent set of mappings used withen Invetment Data context.

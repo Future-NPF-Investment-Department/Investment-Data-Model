@@ -1,5 +1,5 @@
 ﻿
-namespace InvestmentDataContext.Classifications
+namespace InvestmentData.Classifications
 {
     /// <summary>
     ///     Defines Method for accounting.

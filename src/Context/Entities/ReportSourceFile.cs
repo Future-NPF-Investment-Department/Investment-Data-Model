@@ -1,10 +1,7 @@
-﻿using InvestmentDataContext.Classifications;
-using CsvHelper;
+﻿using InvestmentData.Classifications;
 using CsvHelper.Configuration;
-using Microsoft.SqlServer.Server;
-using System.Globalization;
 
-namespace InvestmentDataContext.Entities
+namespace InvestmentData.Context.Entities
 {
     /// <summary>
     ///     Represents report source file (.csv) information.
@@ -13,7 +10,7 @@ namespace InvestmentDataContext.Entities
     {
         //private readonly string _fileDirecory;
         public ReportSourceFile() { }
-        private ReportSourceFile(FileInfo file, string provider, ReportPricingType pricing, SqlTargetTable destination) 
+        private ReportSourceFile(FileInfo file, string provider, ReportPricingType pricing, SqlTargetTable destination)
         {
             //_fileDirecory = file.DirectoryName ?? string.Empty;
             FileName = file.Name;
@@ -46,7 +43,7 @@ namespace InvestmentDataContext.Entities
         /// <summary>
         ///     Prices used in report source file.
         /// </summary>
-        public ReportPricingType PricingType { get; set; }  
+        public ReportPricingType PricingType { get; set; }
         /// <summary>
         ///     Number of records in file.
         /// </summary>
@@ -83,7 +80,7 @@ namespace InvestmentDataContext.Entities
         /// </summary>
         public static ReportSourceFile New(FileInfo file, PathsInfo pathsInfo)
         {
-            if (file.Directory is null) throw new Exception("");            
+            if (file.Directory is null) throw new Exception("");
             ReportPricingType pricing = pathsInfo.PricingFlags[file.Directory!.FullName];
             SqlTargetTable destination = pathsInfo.SqlTargetFlags[file.Directory!.FullName];
             string provider = pathsInfo.ProviderFlags[file.Directory!.FullName];
@@ -114,27 +111,5 @@ namespace InvestmentDataContext.Entities
         {
             return HashCode.Combine(FileDirectoryName, ReportDate, PricingType, Destination);
         }
-
-        //public static bool operator ==(ReportSourceFile? left, ReportSourceFile? right)
-        //{
-        //    return EqualityComparer<ReportSourceFile>.Default.Equals(left, right);
-        //}
-
-        //public static bool operator !=(ReportSourceFile? left, ReportSourceFile? right)
-        //{
-        //    return !(left == right);
-        //}
-
-        //public bool Equals(ReportSourceFile other)
-        //{
-        //    if (other is null) return false;
-
-        //    return this.FileName == other.FileName
-        //        || ((this.ReportDate == other.ReportDate)
-        //        & (this.Destination == other.Destination)
-        //        & (this.PricingType == other.PricingType)
-        //        & (this.Provider == other.Provider)
-        //        & (this._fileDirecory == other._fileDirecory));
-        //}
     }
 }

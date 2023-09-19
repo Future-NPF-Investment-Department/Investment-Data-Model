@@ -1,7 +1,6 @@
-﻿using InvestmentDataContext.Classifications;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using InvestmentData.Classifications;
 
-namespace InvestmentDataContext.Entities.Owned
+namespace InvestmentData.Context.Entities.Owned
 {
     /// <summary>
     ///     Asset pricing information.
@@ -23,7 +22,7 @@ namespace InvestmentDataContext.Entities.Owned
         ///     Boolean flag to select all assets that priced at fair prices.
         /// </summary>
         public bool UseFairPricing { get; set; }
-        
+
         /// <summary>
         ///     Defines Report specific <see cref="PricingInfo"/>.
         /// </summary>

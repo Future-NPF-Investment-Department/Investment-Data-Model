@@ -1,5 +1,5 @@
 ﻿
-namespace InvestmentDataContext.Classifications
+namespace InvestmentData.Classifications
 {
     /// <summary>
     ///     Represents type of transaction. Used in FlowInfo entity.

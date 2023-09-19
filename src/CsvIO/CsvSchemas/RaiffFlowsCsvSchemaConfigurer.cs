@@ -1,12 +1,12 @@
-﻿using InvestmentDataContext.Entities;
-using InvestmentDataContext.CsvIO.CsvSchemas;
+﻿using InvestmentData.CsvIO.CsvSchemas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InvestmentData.Context.Entities;
 
-namespace InvestmentDataContext.src.IO.CsvSchemas
+namespace InvestmentData.CsvIO.CsvSchemas
 {
     /// <summary>
     ///     Configurer for Flows csv schema (Raiffeisen format)

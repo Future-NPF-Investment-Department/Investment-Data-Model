@@ -1,17 +1,18 @@
-﻿using InvestmentDataContext.Classifications;
-using InvestmentDataContext.Entities;
+﻿using InvestmentData.Classifications;
+using InvestmentData.Context;
+using InvestmentData.Context.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace InvestmentDataContext
+namespace InvestmentData
 {
     public abstract class InvestmentDataQueryBuilder<TData, TBuilder>
         where TData : InvestmentDataRecord
         where TBuilder : InvestmentDataQueryBuilder<TData, TBuilder>
     {
-        private protected InvestmentData _context;
+        private protected InvestmentDataContext _context;
         private protected IQueryable<TData> _query = null!;
 
-        private protected InvestmentDataQueryBuilder(InvestmentData context)
+        private protected InvestmentDataQueryBuilder(InvestmentDataContext context)
             => _context = context;
 
         private protected abstract TBuilder Builder { get; }

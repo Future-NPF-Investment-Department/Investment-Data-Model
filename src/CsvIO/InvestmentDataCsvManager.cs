@@ -1,13 +1,14 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
-using InvestmentDataContext.Classifications;
-using InvestmentDataContext.Entities;
-using InvestmentDataContext.Entities.Owned;
+using InvestmentData.Classifications;
+using InvestmentData.Context;
+using InvestmentData.Context.Entities;
+using InvestmentData.Context.Entities.Owned;
 using RuDataAPI;
 using RuDataAPI.Extensions;
 using System.Text;
 
-namespace InvestmentDataContext.CsvIO
+namespace InvestmentData.CsvIO
 {
     public class InvestmentDataCsvManager
     {
@@ -21,14 +22,14 @@ namespace InvestmentDataContext.CsvIO
 
         static InvestmentDataCsvManager() { }
         private InvestmentDataCsvManager()
-            => _connstr = InvestmentData.DFLTCONNSTR;
+            => _connstr = InvestmentDataContext.DFLTCONNSTR;
 
         public static InvestmentDataCsvManager Instance => _singletonInstance;
 
         /// <summary>
         ///     Tells IO Manager what connection string to use while performing IO operations within context.
         /// </summary>
-        /// <param name="connectionString"> <see cref="InvestmentData"/> context connection string. </param>
+        /// <param name="connectionString"> <see cref="src.Context.InvestmentDataContext"/> context connection string. </param>
         public void UseConnectionString(string connectionString)
             => _connstr = connectionString;
 
@@ -102,7 +103,7 @@ namespace InvestmentDataContext.CsvIO
                 ? file.DirectoryName 
                 : throw new Exception("Csv file path cannot be null.");
 
-            using var context = new InvestmentData(_connstr);
+            using var context = new InvestmentDataContext(_connstr);
             var loadedReports = context.Reports;
             var loadedReportNames = loadedReports.Select(rep => rep.FileName).ToHashSet();
             if (loadedReportNames.Contains(file.Name)) return;

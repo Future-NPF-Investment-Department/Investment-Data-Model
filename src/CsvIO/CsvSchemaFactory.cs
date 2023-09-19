@@ -1,12 +1,11 @@
 ﻿#pragma warning disable IDE1006 // Naming styles
 
 using CsvHelper.Configuration;
-using InvestmentDataContext.Classifications;
-using InvestmentDataContext.Entities;
-using InvestmentDataContext.CsvIO.CsvSchemas;
-using InvestmentDataContext.src.IO.CsvSchemas;
+using InvestmentData.Classifications;
+using InvestmentData.CsvIO.CsvSchemas;
+using InvestmentData.Context.Entities;
 
-namespace InvestmentDataContext.CsvIO
+namespace InvestmentData.CsvIO
 {
     /// <summary>
     ///     Csv schema factory.

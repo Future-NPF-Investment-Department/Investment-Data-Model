@@ -1,5 +1,5 @@
 ﻿
-namespace InvestmentDataContext
+namespace InvestmentData
 {
     /// <summary>
     ///     Represents price fixation period information.

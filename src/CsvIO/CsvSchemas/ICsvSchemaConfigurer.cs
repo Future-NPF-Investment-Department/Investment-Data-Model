@@ -1,7 +1,6 @@
-﻿using InvestmentDataContext.Entities;
-using InvestmentDataContext.CsvIO.CsvSchemas;
+﻿using InvestmentData.Context.Entities;
 
-namespace InvestmentDataContext.CsvIO.CsvSchemas
+namespace InvestmentData.CsvIO.CsvSchemas
 {
     public interface ICsvSchemaConfigurer<T>
         where T : InvestmentDataRecord

@@ -1,17 +1,17 @@
-﻿using InvestmentDataContext.Classifications;
-using InvestmentDataContext.Entities.Owned;
+﻿using InvestmentData.Classifications;
+using InvestmentData.Context.Entities.Owned;
 
-namespace InvestmentDataContext.Entities
+namespace InvestmentData.Context.Entities
 {
     /// <summary>
-    ///     Represents flow of specific asset at particular date.
+    ///     Represents value (worth) of specific asset at particular date.
     /// </summary>
-    public class AssetFlow : InvestmentDataRecord
+    public class AssetValue : InvestmentDataRecord
     {
         /// <summary>
-        ///     Trade ID.
+        ///     Report date.
         /// </summary>
-        public long? Id { get; set; }
+        public override DateTime Date { get; set; }
         /// <summary>
         ///     Information regarding the fund in which portfolio the asset is located.
         /// </summary>
@@ -25,57 +25,57 @@ namespace InvestmentDataContext.Entities
         /// </summary>
         public override IssuerInfo Issuer { get; set; } = null!;
         /// <summary>
+        ///     Asset ISIN code.
+        /// </summary>
+        public override string Isin { get; set; } = null!;
+        /// <summary>
         ///     Information about security that represents specific asset.
         /// </summary>
         public override SecurityInfo Security { get; set; } = null!;
         /// <summary>
-        ///     Asset ISIN code (if any).
-        /// </summary>
-        public override string? Isin { get; set; } = null!;
-        /// <summary>
-        ///     Date of flow originated.
-        /// </summary>
-        public DateTime? OperationDate { get; set; }
-        /// <summary>
-        ///     Date on which real flow occured.
-        /// </summary>
-        public override DateTime Date { get; set; }
-        /// <summary>
-        ///     Type of flow transaction
-        /// </summary>
-        public TransType TransType { get; set; }
-        /// <summary>
-        ///     Total net value of particular flow at pay date. 
-        /// </summary>
-        public override double? NetValue { get; set; }
-        /// <summary>
-        ///     Total accrued interest of particular asset at pay date. 
-        /// </summary>
-        public override double? AccruedInterest { get; set; }
-        /// <summary>
-        ///     Total full value of particular flow at pay date.
-        /// </summary>
-        public override double FullValue { get; set; }
-        /// <summary>
-        ///     Quantity of particular asset in flow that took place at pay date.
+        ///     Quantity of particular asset at report date. 
         /// </summary>
         public override double? Amount { get; set; }
         /// <summary>
-        ///     Information regarding commisions that were payed when flow occured.
+        ///     Total net value of particular asset at report date. 
         /// </summary>
-        public ComissionInfo Comissions { get; set; } = null!;
+        public override double? NetValue { get; set; }
         /// <summary>
-        ///     Additional information regarding the nature of the flow.
+        ///     Total accrued interest of particular asset at report date. 
         /// </summary>
-        public string? Comment { get; set; }
+        public override double? AccruedInterest { get; set; }
+        /// <summary>
+        ///     Total full value of particular asset at report date.
+        /// </summary>
+        public override double FullValue { get; set; }
+        /// <summary>
+        ///     Interest rate information related to interest-based assets such as Deposits or REPO.
+        /// </summary>
+        public InterestRateInfo Interest { get; set; } = null!;
+        /// <summary>
+        ///     Information regarding creditworthiness of corresponding asset.
+        /// </summary>
+        public CreditRatingInfo CreditRating { get; set; } = null!;
+        /// <summary>
+        ///     Method of accounting for particular asset.
+        /// </summary>
+        public AccountingMethod AccountingMethod { get; set; }
+        /// <summary>
+        ///     Report-specific pricing information for this asset.
+        /// </summary>
+        public PricingInfo Pricing { get; set; } = null!;
         /// <summary>
         ///     Load time (instance creation time in fact).
         /// </summary>
         public DateTime LoadTime { get; set; } = DateTime.Now;
         /// <summary>
-        ///     Source file full name.
+        ///     Report source file name.
         /// </summary>
         public string ReportName { get; set; } = null!;
+        /// <summary>
+        ///     Prices used in report source file.
+        /// </summary>
+        public ReportPricingType ReportPricing { get; set; }
         /// <summary>
         ///     Corresponding market information regarding the security that represents specific asset in the flow.   
         /// </summary>

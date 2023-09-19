@@ -1,4 +1,5 @@
-﻿namespace InvestmentDataContext.Entities.Owned
+﻿
+namespace InvestmentData.Context.Entities.Owned
 {
     /// <summary>
     ///     Asset issuer information.

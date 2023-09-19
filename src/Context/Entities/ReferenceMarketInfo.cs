@@ -1,9 +1,9 @@
 ﻿#pragma warning disable IDE0090
 
-using InvestmentDataContext.Classifications;
+using InvestmentData.Classifications;
 using RuDataAPI.Extensions;
 
-namespace InvestmentDataContext.Entities
+namespace InvestmentData.Context.Entities
 {
     /// <summary>
     ///     Represents general market information about specific security.
@@ -50,5 +50,5 @@ namespace InvestmentDataContext.Entities
 
         public static ReferenceMarketInfo New(EfirSecurity secinfo, AssetClass assetClass, RiskType riskType)
             => new ReferenceMarketInfo(secinfo, assetClass, riskType);
-    }    
+    }
 }

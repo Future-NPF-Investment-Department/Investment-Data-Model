@@ -1,4 +1,6 @@
-﻿namespace InvestmentDataContext.Entities.Owned
+﻿using InvestmentData.Context.Entities;
+
+namespace InvestmentData.Context.Entities.Owned
 {
     /// <summary>
     ///     Fund information.

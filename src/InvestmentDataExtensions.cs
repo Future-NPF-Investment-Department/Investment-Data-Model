@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
 using CsvHelper.Configuration;
-using InvestmentDataContext.Classifications;
+using InvestmentData.Classifications;
 
-namespace InvestmentDataContext
+namespace InvestmentData
 {
     public static class InvestmentDataExtensions
     {
@@ -108,10 +108,7 @@ namespace InvestmentDataContext
 
                 throw new Exception("pizdec");
 
-            });
-
-                
+            });                
         }
-
     }
 }

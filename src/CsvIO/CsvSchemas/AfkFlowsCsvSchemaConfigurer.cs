@@ -1,6 +1,6 @@
-﻿using InvestmentDataContext.Entities;
+﻿using InvestmentData.Context.Entities;
 
-namespace InvestmentDataContext.CsvIO.CsvSchemas
+namespace InvestmentData.CsvIO.CsvSchemas
 {
     /// <summary>
     ///     Configurer for Flows csv schema (AFK Systema Capital format)

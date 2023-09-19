@@ -1,6 +1,6 @@
-﻿using InvestmentDataContext.Entities.Owned;
+﻿using InvestmentData.Context.Entities.Owned;
 
-namespace InvestmentDataContext.Entities
+namespace InvestmentData.Context.Entities
 {
     /// <summary>
     ///     Represents an abstrct record of investment data.
@@ -14,15 +14,15 @@ namespace InvestmentDataContext.Entities
         /// <summary>
         ///     Information regarding the fund.
         /// </summary>
-        public abstract FundInfo Fund { get; set; } 
+        public abstract FundInfo Fund { get; set; }
         /// <summary>
         ///      Investing portfolio Information. 
         /// </summary>
-        public abstract PortfolioInfo Portfolio { get; set; } 
+        public abstract PortfolioInfo Portfolio { get; set; }
         /// <summary>
         ///      Iissuer information.
         /// </summary>
-        public abstract IssuerInfo Issuer { get; set; } 
+        public abstract IssuerInfo Issuer { get; set; }
         /// <summary>
         ///     ISIN code.
         /// </summary>
@@ -30,7 +30,7 @@ namespace InvestmentDataContext.Entities
         /// <summary>
         ///      Security Information.
         /// </summary>
-        public abstract SecurityInfo Security { get; set; } 
+        public abstract SecurityInfo Security { get; set; }
         /// <summary>
         ///     Corresponding amount. 
         /// </summary>

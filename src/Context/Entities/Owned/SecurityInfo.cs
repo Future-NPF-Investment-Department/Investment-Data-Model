@@ -1,6 +1,6 @@
-﻿using InvestmentDataContext.Classifications;
+﻿using InvestmentData.Classifications;
 
-namespace InvestmentDataContext.Entities.Owned
+namespace InvestmentData.Context.Entities.Owned
 {
     /// <summary>
     ///     Security information.

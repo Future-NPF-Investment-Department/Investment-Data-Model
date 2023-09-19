@@ -1,4 +1,4 @@
-﻿namespace InvestmentDataContext.Classifications
+﻿namespace InvestmentData.Classifications
 {   
     /// <summary>
     ///     Represents asset class.
