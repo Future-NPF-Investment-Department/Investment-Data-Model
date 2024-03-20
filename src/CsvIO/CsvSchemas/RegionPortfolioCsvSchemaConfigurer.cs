@@ -83,7 +83,8 @@ namespace InvestmentData.CsvIO.CsvSchemas
                 .Name("НКД, руб.");
 
             csvSchema.Map(av => av.FullValue)
-                .Name("Сумма с НКД, руб.");
+                .Name("Сумма с НКД, руб.")
+                .Default(.0);
 
             csvSchema.Map(av => av.Interest.DepositExpirationDate)
                 .Name("Дата погашения депозита");
