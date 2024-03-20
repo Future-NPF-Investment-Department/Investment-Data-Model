@@ -125,8 +125,10 @@ namespace InvestmentData
             FlowTransitionMapping.Add("закрытие мно", TransType.MPBClosure);
             FlowTransitionMapping.Add("выплата процентов по мно", TransType.InterestPayment);
             FlowTransitionMapping.Add("выплата процентов по депозиту/мно", TransType.InterestPayment);
+            FlowTransitionMapping.Add("выплата процентов по депозиту", TransType.InterestPayment);
             FlowTransitionMapping.Add("размещение депозита", TransType.DepositOpen);
             FlowTransitionMapping.Add("выплата основного тела долга по депозиту", TransType.DepositClosure);
+            FlowTransitionMapping.Add("выплата основного долга по депозиту", TransType.DepositClosure);
             FlowTransitionMapping.Add("поступление дивидендов", TransType.Dividends);
             FlowTransitionMapping.Add("выплата купонного дохода", TransType.CouponPayment);
             FlowTransitionMapping.Add("погашение нкд", TransType.CouponPayment);
@@ -146,6 +148,7 @@ namespace InvestmentData
             // adding accounting method mapping
             AccountingMethodMapping.Add(string.Empty, AccountingMethod.None);
             AccountingMethodMapping.Add("не применимо", AccountingMethod.None);
+            AccountingMethodMapping.Add("не применимо ", AccountingMethod.None);
             AccountingMethodMapping.Add("по справедливой", AccountingMethod.Fair);
             AccountingMethodMapping.Add("по справедливой через пу", AccountingMethod.Fair);
             AccountingMethodMapping.Add("dfpl - активы/обязательства, переоцениваемые по справедливой стоимости через прибыль или убыток", AccountingMethod.Fair);
