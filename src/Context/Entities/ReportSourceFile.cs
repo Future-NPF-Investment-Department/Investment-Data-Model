@@ -1,5 +1,5 @@
 ﻿using InvestmentData.Classifications;
-using CsvHelper.Configuration;
+//using CsvHelper.Configuration;
 
 namespace InvestmentData.Context.Entities
 {
@@ -70,10 +70,6 @@ namespace InvestmentData.Context.Entities
         ///     Reflects one-to-many relationship (navigation property) with on-delete-cascade constraint.
         /// </remarks>
         public virtual ICollection<AssetFlow> FlowsRecords { get; set; } = null!;
-        /// <summary>
-        ///     Csv mapping configuration.
-        /// </summary>
-        internal ClassMap? CsvMapping { get; set; }
 
         /// <summary>
         ///     Creates new instance of <see cref="ReportSourceFile"/>.

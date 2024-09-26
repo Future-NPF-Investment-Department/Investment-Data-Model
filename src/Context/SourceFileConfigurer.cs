@@ -26,8 +26,6 @@ namespace InvestmentData.Context
             builder.Property(rep => rep.Destination)
             .HasConversion(pt => pt.ToString(),
             str => str.ToEnum<SqlTargetTable>());
-
-            builder.Ignore(rep => rep.CsvMapping);
         }
     }
 }
