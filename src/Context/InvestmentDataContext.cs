@@ -1,5 +1,4 @@
-﻿using InvestmentData.SqlServer;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using InvestmentData.Context.Entities;
 
 namespace InvestmentData.Context
@@ -41,7 +40,7 @@ namespace InvestmentData.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDbFunction(() => IdepSqlFunctions.GetFlowDirection(default))
+            modelBuilder.HasDbFunction(() => InvestmentDataExtensions.GetFlowDirection(default))
                 .HasSchema("idep");
 
             modelBuilder.ApplyConfiguration(new AssetValueConfigurer());
