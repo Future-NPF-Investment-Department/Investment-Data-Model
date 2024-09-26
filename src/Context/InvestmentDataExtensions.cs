@@ -1,6 +1,6 @@
 ﻿using InvestmentData.Classifications;
 
-namespace InvestmentDataContext.src.Context
+namespace InvestmentData.Context
 {
     public static class InvestmentDataExtensions
     {
