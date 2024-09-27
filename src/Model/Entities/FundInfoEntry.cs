@@ -5,9 +5,9 @@ namespace InvestmentDataModel
     ///     Fund information.
     /// </summary>
     /// <remarks>
-    ///     This type is owned by <see cref="AssetValue"/> entity type.
+    ///     This type is owned by <see cref="AssetEntry"/> entity type.
     /// </remarks>
-    public record FundInfo
+    public record FundInfoEntry
     {
         /// <summary>
         /// Name of fund.

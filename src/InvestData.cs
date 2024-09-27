@@ -20,11 +20,11 @@ namespace InvestmentDataModel
         {
         }
 
-        public virtual DbSet<AssetFlow> Flows { get; set; } = null!;
-        public virtual DbSet<AssetValue> Assets { get; set; }
+        public virtual DbSet<FlowEntry> Flows { get; set; } = null!;
+        public virtual DbSet<AssetEntry> Assets { get; set; }
         public virtual DbSet<ReportSourceFile> Reports { get; set; } = null!;
-        public virtual DbSet<ReferenceMarketInfo> Securities { get; set; } = null!;
-        public virtual DbSet<PriceFixationInfo> FixationPeriods { get; set; } = null!;
+        public virtual DbSet<SecurityEntry> Securities { get; set; } = null!;
+        public virtual DbSet<PriceFixationEntry> FixationPeriods { get; set; } = null!;
 
 
 

@@ -5,9 +5,9 @@ namespace InvestmentDataModel
     ///     Investment portfolio information.
     /// </summary>
     /// <remarks>
-    ///     This type is owned by <see cref="AssetValue"/> entity type.
+    ///     This type is owned by <see cref="AssetEntry"/> entity type.
     /// </remarks>
-    public record PortfolioInfo
+    public record PortfolioEntry
     {
         /// <summary>
         ///     Type of pension property.

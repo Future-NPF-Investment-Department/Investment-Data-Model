@@ -5,9 +5,9 @@ namespace InvestmentDataModel
     ///     Information regarding interest-based assets.
     /// </summary>
     /// <remarks>
-    ///     This type is owned by <see cref="AssetValue"/> entity type.
+    ///     This type is owned by <see cref="AssetEntry"/> entity type.
     /// </remarks>
-    public record InterestRateInfo
+    public record InterestRateEntry
     {
         /// <summary>
         ///     Deposit expiration date.

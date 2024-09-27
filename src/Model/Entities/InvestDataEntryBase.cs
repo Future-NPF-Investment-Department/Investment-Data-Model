@@ -4,7 +4,7 @@ namespace InvestmentDataModel
     /// <summary>
     ///     Represents an abstrct record of investment data.
     /// </summary>
-    public abstract class InvestmentDataRecord
+    public abstract class InvestDataEntryBase
     {
         /// <summary>
         ///     Report date.
@@ -13,15 +13,15 @@ namespace InvestmentDataModel
         /// <summary>
         ///     Information regarding the fund.
         /// </summary>
-        public abstract FundInfo Fund { get; set; }
+        public abstract FundInfoEntry Fund { get; set; }
         /// <summary>
         ///      Investing portfolio Information. 
         /// </summary>
-        public abstract PortfolioInfo Portfolio { get; set; }
+        public abstract PortfolioEntry Portfolio { get; set; }
         /// <summary>
         ///      Iissuer information.
         /// </summary>
-        public abstract IssuerInfo Issuer { get; set; }
+        public abstract IssuerEntry Issuer { get; set; }
         /// <summary>
         ///     ISIN code.
         /// </summary>
@@ -29,7 +29,7 @@ namespace InvestmentDataModel
         /// <summary>
         ///      Security Information.
         /// </summary>
-        public abstract SecurityInfo Security { get; set; }
+        public abstract SecurityInfoEntry Security { get; set; }
         /// <summary>
         ///     Corresponding amount. 
         /// </summary>
@@ -49,7 +49,7 @@ namespace InvestmentDataModel
         /// <summary>
         ///     Corresponding market information.
         /// </summary>
-        public abstract ReferenceMarketInfo MarketInfo { get; set; }
+        public abstract SecurityEntry MarketInfo { get; set; }
         /// <summary>
         ///     Information about source file.
         /// </summary>

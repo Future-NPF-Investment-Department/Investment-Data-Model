@@ -2,7 +2,7 @@
 
 namespace InvestmentDataModel
 {
-    public class AssetsQueryBuilder : InvestmentDataQueryBuilder<AssetValue, AssetsQueryBuilder>
+    public class AssetsQueryBuilder : InvestmentDataQueryBuilder<AssetEntry, AssetsQueryBuilder>
     {
         public AssetsQueryBuilder(InvestData context) : base(context)
             => _query = _context.Assets.AsNoTracking();

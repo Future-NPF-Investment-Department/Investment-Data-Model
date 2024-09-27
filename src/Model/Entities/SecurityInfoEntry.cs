@@ -5,9 +5,9 @@ namespace InvestmentDataModel
     ///     Security information.
     /// </summary>
     /// <remarks>
-    ///     This type is owned by <see cref="AssetValue"/> entity type.
+    ///     This type is owned by <see cref="AssetEntry"/> entity type.
     /// </remarks>
-    public record SecurityInfo
+    public record SecurityInfoEntry
     {
         /// <summary>
         ///     Asset class (e.g. equities, bonds, cash etc.)

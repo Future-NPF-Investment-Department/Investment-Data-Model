@@ -5,9 +5,9 @@ namespace InvestmentDataModel
     ///     Asset issuer information.
     /// </summary>
     /// <remarks>
-    ///     This type is owned by <see cref="AssetValue"/> entity type.
+    ///     This type is owned by <see cref="AssetEntry"/> entity type.
     /// </remarks>
-    public record IssuerInfo
+    public record IssuerEntry
     {
         /// <summary>
         ///     Emitent name.

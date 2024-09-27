@@ -5,9 +5,9 @@ namespace InvestmentDataModel
     ///     Information regarding creditworthiness of particular asset.
     /// </summary>
     /// <remarks>
-    ///     This type is owned by <see cref="AssetValue"/> entity type.
+    ///     This type is owned by <see cref="AssetEntry"/> entity type.
     /// </remarks>
-    public record CreditRatingInfo
+    public record CreditRatingEntry
     {
         /// <summary>
         ///     Security best rating (if any).

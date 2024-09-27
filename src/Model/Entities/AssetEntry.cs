@@ -4,7 +4,7 @@ namespace InvestmentDataModel
     /// <summary>
     ///     Represents value (worth) of specific asset at particular date.
     /// </summary>
-    public class AssetValue : InvestmentDataRecord
+    public class AssetEntry : InvestDataEntryBase
     {
         /// <summary>
         ///     Report date.
@@ -13,15 +13,15 @@ namespace InvestmentDataModel
         /// <summary>
         ///     Information regarding the fund in which portfolio the asset is located.
         /// </summary>
-        public override FundInfo Fund { get; set; } = null!;
+        public override FundInfoEntry Fund { get; set; } = null!;
         /// <summary>
         ///     Information regarding the investing portfolio an asset belongs to. 
         /// </summary>
-        public override PortfolioInfo Portfolio { get; set; } = null!;
+        public override PortfolioEntry Portfolio { get; set; } = null!;
         /// <summary>
         ///     Information regarding the issuer of corresponding asset.
         /// </summary>
-        public override IssuerInfo Issuer { get; set; } = null!;
+        public override IssuerEntry Issuer { get; set; } = null!;
         /// <summary>
         ///     Asset ISIN code.
         /// </summary>
@@ -29,7 +29,7 @@ namespace InvestmentDataModel
         /// <summary>
         ///     Information about security that represents specific asset.
         /// </summary>
-        public override SecurityInfo Security { get; set; } = null!;
+        public override SecurityInfoEntry Security { get; set; } = null!;
         /// <summary>
         ///     Quantity of particular asset at report date. 
         /// </summary>
@@ -49,11 +49,11 @@ namespace InvestmentDataModel
         /// <summary>
         ///     Interest rate information related to interest-based assets such as Deposits or REPO.
         /// </summary>
-        public InterestRateInfo Interest { get; set; } = null!;
+        public InterestRateEntry Interest { get; set; } = null!;
         /// <summary>
         ///     Information regarding creditworthiness of corresponding asset.
         /// </summary>
-        public CreditRatingInfo CreditRating { get; set; } = null!;
+        public CreditRatingEntry CreditRating { get; set; } = null!;
         /// <summary>
         ///     Method of accounting for particular asset.
         /// </summary>
@@ -61,7 +61,7 @@ namespace InvestmentDataModel
         /// <summary>
         ///     Report-specific pricing information for this asset.
         /// </summary>
-        public PricingInfo Pricing { get; set; } = null!;
+        public PricingEntry Pricing { get; set; } = null!;
         /// <summary>
         ///     Load time (instance creation time in fact).
         /// </summary>
@@ -80,7 +80,7 @@ namespace InvestmentDataModel
         /// <remarks>
         ///     Reflects one-to-many relationship (navigation property).
         /// </remarks>
-        public override ReferenceMarketInfo MarketInfo { get; set; } = null!;
+        public override SecurityEntry MarketInfo { get; set; } = null!;
         /// <summary>
         ///     Report source file information.
         /// </summary>

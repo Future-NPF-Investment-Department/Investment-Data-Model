@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace InvestmentDataModel.Model.Configurations
 {
     /// <summary>
-    ///     Configures <see cref="ReferenceMarketInfo"/> entity for Entity Framework.
+    ///     Configures <see cref="SecurityEntry"/> entity for Entity Framework.
     /// </summary>
-    public class MarketInfoConfigurer : IEntityTypeConfiguration<ReferenceMarketInfo>
+    public class MarketInfoConfigurer : IEntityTypeConfiguration<SecurityEntry>
     {
-        public void Configure(EntityTypeBuilder<ReferenceMarketInfo> builder)
+        public void Configure(EntityTypeBuilder<SecurityEntry> builder)
         {
             builder.ToTable("Securities", "idep");
             builder.HasKey(si => si.Isin);

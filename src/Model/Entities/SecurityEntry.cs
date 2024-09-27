@@ -7,11 +7,11 @@ namespace InvestmentDataModel
     /// <summary>
     ///     Represents general market information about specific security.
     /// </summary>
-    public record ReferenceMarketInfo
+    public record SecurityEntry
     {
-        public ReferenceMarketInfo() { }
+        public SecurityEntry() { }
 
-        private ReferenceMarketInfo(EfirSecurity secinfo, AssetClass assetClass, RiskType riskType)
+        private SecurityEntry(EfirSecurity secinfo, AssetClass assetClass, RiskType riskType)
         {
             Isin = secinfo.Isin;
             Name = secinfo.ShortName;
@@ -44,10 +44,10 @@ namespace InvestmentDataModel
         public double? IssueVolume { get; set; }
         public string? IssuerSector { get; set; }
         public RiskType RiskType { get; set; }
-        public virtual ICollection<AssetValue> Portfolio { get; set; } = null!;
-        public virtual ICollection<AssetFlow> Flows { get; set; } = null!;
+        public virtual ICollection<AssetEntry> Portfolio { get; set; } = null!;
+        public virtual ICollection<FlowEntry> Flows { get; set; } = null!;
 
-        public static ReferenceMarketInfo New(EfirSecurity secinfo, AssetClass assetClass, RiskType riskType)
-            => new ReferenceMarketInfo(secinfo, assetClass, riskType);
+        public static SecurityEntry New(EfirSecurity secinfo, AssetClass assetClass, RiskType riskType)
+            => new SecurityEntry(secinfo, assetClass, riskType);
     }
 }

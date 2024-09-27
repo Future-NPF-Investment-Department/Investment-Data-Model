@@ -60,14 +60,14 @@ namespace InvestmentDataModel
         /// <remarks>
         ///     Reflects one-to-many relationship (navigation property) with on-delete-cascade constraint.
         /// </remarks>
-        public virtual ICollection<AssetValue> AssetRecords { get; set; } = null!;
+        public virtual ICollection<AssetEntry> AssetRecords { get; set; } = null!;
         /// <summary>
         ///     Corresponding collection of flows records in this report source file.   
         /// </summary>
         /// <remarks>
         ///     Reflects one-to-many relationship (navigation property) with on-delete-cascade constraint.
         /// </remarks>
-        public virtual ICollection<AssetFlow> FlowsRecords { get; set; } = null!;
+        public virtual ICollection<FlowEntry> FlowsRecords { get; set; } = null!;
 
         public static ReportSourceFile New(FileInfo file, string fileProvifer, ReportPricingType pricing, SqlTargetTable destination)
         {

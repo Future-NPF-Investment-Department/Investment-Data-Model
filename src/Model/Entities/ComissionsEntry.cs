@@ -4,7 +4,7 @@ namespace InvestmentDataModel
     /// <summary>
     ///     Information about commisions payed when any flow has occured.
     /// </summary>
-    public class ComissionInfo
+    public class ComissionsEntry
     {
         /// <summary>
         ///     Flow commission charged by the exchange.

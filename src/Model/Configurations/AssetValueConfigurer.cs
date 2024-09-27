@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace InvestmentDataModel.Model.Configurations
 {
     /// <summary>
-    ///     Configures <see cref="AssetValue"/> entity for Entity Framework.
+    ///     Configures <see cref="AssetEntry"/> entity for Entity Framework.
     /// </summary>
-    public class AssetValueConfigurer : IEntityTypeConfiguration<AssetValue>
+    public class AssetValueConfigurer : IEntityTypeConfiguration<AssetEntry>
     {
-        public void Configure(EntityTypeBuilder<AssetValue> builder)
+        public void Configure(EntityTypeBuilder<AssetEntry> builder)
         {
             builder.ToTable("Portfolio-TEST2", "idep");
             builder.HasKey(ai => ai.LoadTime);

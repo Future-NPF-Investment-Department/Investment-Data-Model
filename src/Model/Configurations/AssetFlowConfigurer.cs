@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace InvestmentDataModel.Model.Configurations
 {
     /// <summary>
-    ///     Configures <see cref="AssetFlow"/> builder for Entity Framework.
+    ///     Configures <see cref="FlowEntry"/> builder for Entity Framework.
     /// </summary>
-    public class AssetFlowConfigurer : IEntityTypeConfiguration<AssetFlow>
+    public class AssetFlowConfigurer : IEntityTypeConfiguration<FlowEntry>
     {
-        public void Configure(EntityTypeBuilder<AssetFlow> builder)
+        public void Configure(EntityTypeBuilder<FlowEntry> builder)
         {
             builder.ToTable("Flows-TEST2", "idep");
             builder.HasKey(flow => flow.LoadTime);

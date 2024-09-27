@@ -3,7 +3,7 @@
 namespace InvestmentDataModel
 {
     public abstract class InvestmentDataQueryBuilder<TData, TBuilder>
-        where TData : InvestmentDataRecord
+        where TData : InvestDataEntryBase
         where TBuilder : InvestmentDataQueryBuilder<TData, TBuilder>
     {
         private protected InvestData _context;

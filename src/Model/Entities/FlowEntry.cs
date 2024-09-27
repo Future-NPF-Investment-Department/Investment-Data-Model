@@ -4,7 +4,7 @@ namespace InvestmentDataModel
     /// <summary>
     ///     Represents flow of specific asset at particular date.
     /// </summary>
-    public class AssetFlow : InvestmentDataRecord
+    public class FlowEntry : InvestDataEntryBase
     {
         /// <summary>
         ///     Trade ID.
@@ -13,19 +13,19 @@ namespace InvestmentDataModel
         /// <summary>
         ///     Information regarding the fund in which portfolio the asset is located.
         /// </summary>
-        public override FundInfo Fund { get; set; } = null!;
+        public override FundInfoEntry Fund { get; set; } = null!;
         /// <summary>
         ///     Information regarding the investing portfolio an asset belongs to. 
         /// </summary>
-        public override PortfolioInfo Portfolio { get; set; } = null!;
+        public override PortfolioEntry Portfolio { get; set; } = null!;
         /// <summary>
         ///     Information regarding the issuer of corresponding asset.
         /// </summary>
-        public override IssuerInfo Issuer { get; set; } = null!;
+        public override IssuerEntry Issuer { get; set; } = null!;
         /// <summary>
         ///     Information about security that represents specific asset.
         /// </summary>
-        public override SecurityInfo Security { get; set; } = null!;
+        public override SecurityInfoEntry Security { get; set; } = null!;
         /// <summary>
         ///     Asset ISIN code (if any).
         /// </summary>
@@ -61,7 +61,7 @@ namespace InvestmentDataModel
         /// <summary>
         ///     Information regarding commisions that were payed when flow occured.
         /// </summary>
-        public ComissionInfo Comissions { get; set; } = null!;
+        public ComissionsEntry Comissions { get; set; } = null!;
         /// <summary>
         ///     Additional information regarding the nature of the flow.
         /// </summary>
@@ -80,7 +80,7 @@ namespace InvestmentDataModel
         /// <remarks>
         ///     Reflects one-to-many relationship (navigation property).
         /// </remarks>
-        public override ReferenceMarketInfo MarketInfo { get; set; } = null!;
+        public override SecurityEntry MarketInfo { get; set; } = null!;
         /// <summary>
         ///     Report source file information.
         /// </summary>
