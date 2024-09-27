@@ -1,5 +1,4 @@
-﻿
-namespace InvestmentDataModel
+﻿namespace InvestmentDataModel.Context.Entities
 {
     /// <summary>
     ///     Represents price fixation period information.

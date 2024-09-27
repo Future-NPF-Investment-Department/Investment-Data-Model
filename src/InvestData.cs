@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using InvestmentDataModel.Context.Entities;
 using InvestmentDataModel.Context;
+using InvestmentDataModel.Context.Entities;
 
 namespace InvestmentDataModel
 {
