@@ -1,3 +1,8 @@
-﻿# InvestmentDataContext
+﻿# Investment-Data-Model
 
-InvestmentDataContext - это внутренний API группы фондов БУДУЩЕЕ для работы с базой данных в контексте инвестиционных данных (портфели, сделки).
+Investment-Data-Model - это .NET-библиотека, построенная на базе [EntityFramework](https://learn.microsoft.com/en-us/ef/), которая описывает модель данных, отражающих инвестиционную деятельность группы фондов. 
+Investment-Data-Model также предоставляет доступ к инвестиционным данным, хранящимся в базах данных группы фондов.
+
+
+
+
