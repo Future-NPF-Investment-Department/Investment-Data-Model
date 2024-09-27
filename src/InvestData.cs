@@ -1,29 +1,30 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using InvestmentDataModel.Context.Entities;
+using InvestmentDataModel.Context;
 
-namespace InvestmentDataModel.Context
+namespace InvestmentDataModel
 {
-    public class InvestmentDataContext : DbContext
+    public class InvestData : DbContext
     {
-        public const string DFLTCONNSTR 
+        public const string DFLTCONNSTR
             = "Server=(localdb)\\mssqllocaldb;Database=InvestmentDataBase-Test;Trusted_Connection=True;Integrated Security=True;";
         private readonly string? _connString;
 
-        public InvestmentDataContext() : base()
+        public InvestData() : base()
         {
         }
 
-        public InvestmentDataContext(string connString) : base()
+        public InvestData(string connString) : base()
             => _connString = connString;
 
-        public InvestmentDataContext(DbContextOptions<InvestmentDataContext> options) : base(options)
+        public InvestData(DbContextOptions<InvestData> options) : base(options)
         {
         }
 
-        public virtual DbSet<ReferenceMarketInfo> Securities { get; set; } = null!;
         public virtual DbSet<AssetFlow> Flows { get; set; } = null!;
         public virtual DbSet<AssetValue> Assets { get; set; }
         public virtual DbSet<ReportSourceFile> Reports { get; set; } = null!;
+        public virtual DbSet<ReferenceMarketInfo> Securities { get; set; } = null!;
         public virtual DbSet<PriceFixationInfo> FixationPeriods { get; set; } = null!;
 
 
@@ -41,7 +42,7 @@ namespace InvestmentDataModel.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasDbFunction(() => InvestmentDataExtensions.GetFlowDirection(default))
+                .HasDbFunction(() => InvestDataExtensions.GetFlowDirection(default))
                 .HasSchema("idep");
 
             modelBuilder.ApplyConfiguration(new AssetValueConfigurer());

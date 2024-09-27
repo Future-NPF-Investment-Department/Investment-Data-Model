@@ -1,13 +1,12 @@
 ﻿using InvestmentDataModel.Classifications;
 using Microsoft.EntityFrameworkCore;
-using InvestmentDataModel.Context;
 using InvestmentDataModel.Context.Entities;
 
 namespace InvestmentDataModel
 {
     public class FlowsQueryBuilder : InvestmentDataQueryBuilder<AssetFlow, FlowsQueryBuilder>
     {
-        public FlowsQueryBuilder(InvestmentDataContext context) : base(context)
+        public FlowsQueryBuilder(InvestData context) : base(context)
             => _query = _context.Flows.AsNoTracking();
 
         private protected override FlowsQueryBuilder Builder

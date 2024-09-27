@@ -1,5 +1,4 @@
 ﻿using InvestmentDataModel.Classifications;
-using InvestmentDataModel.Context;
 using InvestmentDataModel.Context.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,10 +8,10 @@ namespace InvestmentDataModel
         where TData : InvestmentDataRecord
         where TBuilder : InvestmentDataQueryBuilder<TData, TBuilder>
     {
-        private protected InvestmentDataContext _context;
+        private protected InvestData _context;
         private protected IQueryable<TData> _query = null!;
 
-        private protected InvestmentDataQueryBuilder(InvestmentDataContext context)
+        private protected InvestmentDataQueryBuilder(InvestData context)
             => _context = context;
 
         private protected abstract TBuilder Builder { get; }

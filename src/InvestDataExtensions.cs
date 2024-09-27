@@ -1,8 +1,8 @@
 ﻿using InvestmentDataModel.Classifications;
 
-namespace InvestmentDataModel.Context
+namespace InvestmentDataModel
 {
-    public static class InvestmentDataExtensions
+    public static class InvestDataExtensions
     {
         public static TEnum ToEnum<TEnum>(this string input) where TEnum : Enum
         {
@@ -19,13 +19,13 @@ namespace InvestmentDataModel.Context
         ///     or navigate to Databases -> asrm_data -> Programmability -> Functions -> 
         ///     Scalar-valued Functions -> idep.GetFlowDirection in SQL Server Management Studio. 
         ///     <para>
-        ///         <see cref="NotImplementedException"/> is thrown if method is used outside <see cref="Context.InvestmentDataContext"/> context.       
+        ///         <see cref="NotImplementedException"/> is thrown if method is used outside <see cref="src.InvestData"/> context.       
         ///     </para>
         /// </remarks>
         /// <exception cref="NotImplementedException"> 
-        ///     is thrown if method is used outside <see cref="InvestmentDataContext"/> context.
+        ///     is thrown if method is used outside <see cref="InvestData"/> context.
         /// </exception>
         public static double GetFlowDirection(TransType TransitionType)
-            => throw new NotImplementedException($"GetFlowDirection method could be used only within {nameof(InvestmentDataContext)} context.");
+            => throw new NotImplementedException($"GetFlowDirection method could be used only within {nameof(InvestData)} context.");
     }
 }
