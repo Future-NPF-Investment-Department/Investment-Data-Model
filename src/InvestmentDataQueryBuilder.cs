@@ -1,6 +1,4 @@
-﻿using InvestmentDataModel.Classifications;
-using InvestmentDataModel.Context.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace InvestmentDataModel
 {

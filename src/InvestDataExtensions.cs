@@ -1,5 +1,4 @@
-﻿using InvestmentDataModel.Classifications;
-
+﻿
 namespace InvestmentDataModel
 {
     public static class InvestDataExtensions
