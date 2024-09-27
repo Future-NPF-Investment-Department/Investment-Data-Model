@@ -1,4 +1,4 @@
-﻿namespace InvestmentData.Classifications
+﻿namespace InvestmentDataModel.Classifications
 {
     public enum CreditRating
     {        

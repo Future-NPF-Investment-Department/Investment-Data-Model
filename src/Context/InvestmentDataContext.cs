@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using InvestmentData.Context.Entities;
-using InvestmentDataContext.src.Context;
+using InvestmentDataModel.Context.Entities;
 
-namespace InvestmentData.Context
+namespace InvestmentDataModel.Context
 {
     public class InvestmentDataContext : DbContext
     {

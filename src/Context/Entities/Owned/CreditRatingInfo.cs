@@ -1,6 +1,6 @@
-﻿using InvestmentData.Context.Entities;
+﻿using InvestmentDataModel.Context.Entities;
 
-namespace InvestmentData.Context.Entities.Owned
+namespace InvestmentDataModel.Context.Entities.Owned
 {
     /// <summary>
     ///     Information regarding creditworthiness of particular asset.

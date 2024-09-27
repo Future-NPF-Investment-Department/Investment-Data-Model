@@ -1,5 +1,5 @@
 ﻿
-namespace InvestmentData.Context.Entities.Owned
+namespace InvestmentDataModel.Context.Entities.Owned
 {
     /// <summary>
     ///     Information regarding interest-based assets.

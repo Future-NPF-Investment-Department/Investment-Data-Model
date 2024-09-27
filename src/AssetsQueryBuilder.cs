@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using InvestmentData.Classifications;
-using InvestmentData.Context;
-using InvestmentData.Context.Entities;
+using InvestmentDataModel.Classifications;
+using InvestmentDataModel.Context;
+using InvestmentDataModel.Context.Entities;
 
-namespace InvestmentData
+namespace InvestmentDataModel
 {
     public class AssetsQueryBuilder : InvestmentDataQueryBuilder<AssetValue, AssetsQueryBuilder>
     {

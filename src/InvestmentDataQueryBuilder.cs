@@ -1,9 +1,9 @@
-﻿using InvestmentData.Classifications;
-using InvestmentData.Context;
-using InvestmentData.Context.Entities;
+﻿using InvestmentDataModel.Classifications;
+using InvestmentDataModel.Context;
+using InvestmentDataModel.Context.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace InvestmentData
+namespace InvestmentDataModel
 {
     public abstract class InvestmentDataQueryBuilder<TData, TBuilder>
         where TData : InvestmentDataRecord

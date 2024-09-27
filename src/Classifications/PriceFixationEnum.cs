@@ -7,7 +7,7 @@
  the second one contained data in fair prices (non-fixed pricing). 
 =================================================================================================================================== */
 
-namespace InvestmentData.Classifications
+namespace InvestmentDataModel.Classifications
 {
     /// <summary>
     ///     Represents pricing type for an asset in portfolio. 

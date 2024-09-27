@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace InvestmentData.Classifications
+namespace InvestmentDataModel.Classifications
 {
     /// <summary>
     ///     Represents SQL target table for data loaded/fetched. 

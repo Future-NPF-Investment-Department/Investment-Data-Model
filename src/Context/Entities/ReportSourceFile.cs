@@ -1,6 +1,6 @@
-﻿using InvestmentData.Classifications;
+﻿using InvestmentDataModel.Classifications;
 
-namespace InvestmentData.Context.Entities
+namespace InvestmentDataModel.Context.Entities
 {
     /// <summary>
     ///     Represents report source file (.csv) information.

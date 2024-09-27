@@ -1,6 +1,6 @@
-﻿using InvestmentData.Classifications;
+﻿using InvestmentDataModel.Classifications;
 
-namespace InvestmentData.Context
+namespace InvestmentDataModel.Context
 {
     public static class InvestmentDataExtensions
     {
@@ -15,7 +15,7 @@ namespace InvestmentData.Context
         ///     References GetFlowDirection SQL user-defined scalar-valued function.     
         /// </summary>
         /// <remarks>
-        ///     For more details see <see cref="GetFlowDirection.sql"/> file in <see cref="InvestmentData.SqlServer"/> folder 
+        ///     For more details see <see cref="GetFlowDirection.sql"/> file in <see cref="InvestmentDataModel.SqlServer"/> folder 
         ///     or navigate to Databases -> asrm_data -> Programmability -> Functions -> 
         ///     Scalar-valued Functions -> idep.GetFlowDirection in SQL Server Management Studio. 
         ///     <para>

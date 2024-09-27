@@ -1,10 +1,9 @@
-﻿using InvestmentData.Classifications;
-using InvestmentData.Context.Entities;
-using InvestmentDataContext.src.Context;
+﻿using InvestmentDataModel.Classifications;
+using InvestmentDataModel.Context.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace InvestmentData.Context
+namespace InvestmentDataModel.Context
 {
     /// <summary>
     ///     Configures <see cref="ReportSourceFile"/> entity for Entity Framework.

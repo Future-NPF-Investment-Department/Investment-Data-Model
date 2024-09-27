@@ -1,9 +1,9 @@
 ﻿#pragma warning disable IDE0090
 
-using InvestmentData.Classifications;
+using InvestmentDataModel.Classifications;
 using RuDataAPI.Extensions;
 
-namespace InvestmentData.Context.Entities
+namespace InvestmentDataModel.Context.Entities
 {
     /// <summary>
     ///     Represents general market information about specific security.

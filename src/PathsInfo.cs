@@ -1,6 +1,6 @@
-﻿using InvestmentData.Classifications;
+﻿using InvestmentDataModel.Classifications;
 
-namespace InvestmentData
+namespace InvestmentDataModel
 {
     public class PathsInfo
     {

@@ -1,4 +1,4 @@
-﻿namespace InvestmentData.Context.Entities.Owned
+﻿namespace InvestmentDataModel.Context.Entities.Owned
 {
     /// <summary>
     ///     Information about commisions payed when any flow has occured.

@@ -1,5 +1,5 @@
 ﻿
-namespace InvestmentData.Classifications
+namespace InvestmentDataModel.Classifications
 {
     /// <summary>
     ///     Represents pension property type.

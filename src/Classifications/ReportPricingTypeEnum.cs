@@ -11,7 +11,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace InvestmentData.Classifications
+namespace InvestmentDataModel.Classifications
 {
     /// <summary>
     ///     Represents pricing type of source report. 

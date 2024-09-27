@@ -1,6 +1,6 @@
-﻿using InvestmentData.Classifications;
+﻿using InvestmentDataModel.Classifications;
 
-namespace InvestmentData.Context.Entities.Owned
+namespace InvestmentDataModel.Context.Entities.Owned
 {
     /// <summary>
     ///     Investment portfolio information.

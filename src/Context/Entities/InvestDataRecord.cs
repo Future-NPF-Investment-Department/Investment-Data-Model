@@ -1,6 +1,6 @@
-﻿using InvestmentData.Context.Entities.Owned;
+﻿using InvestmentDataModel.Context.Entities.Owned;
 
-namespace InvestmentData.Context.Entities
+namespace InvestmentDataModel.Context.Entities
 {
     /// <summary>
     ///     Represents an abstrct record of investment data.
