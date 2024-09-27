@@ -11,21 +11,21 @@ namespace InvestmentDataModel
     {
         public SecurityEntry() { }
 
-        private SecurityEntry(EfirSecurity secinfo, AssetClass assetClass, RiskType riskType)
+        private SecurityEntry(InstrumentInfo secinfo, AssetClass assetClass, RiskType riskType)
         {
             Isin = secinfo.Isin;
-            Name = secinfo.ShortName;
-            IssuerName = secinfo.IssuerName;
+            Name = secinfo.Name;
+            IssuerName = secinfo.Issuer;
             AssetClass = assetClass;
-            FaceValue = secinfo.Notional;
+            FaceValue = secinfo.InitialFaceValue;
             Currency = secinfo.Currency;
-            CouponType = secinfo.CouponType;
-            CouponPeriod = secinfo.CouponPeriod;
-            Reference = secinfo.CouponReferenceRateName;
+            CouponType = secinfo.CouponType.ToString();
+            CouponPeriod = secinfo.CouponLength.ToString();
+            Reference = secinfo.CouponReference;
             MaturityDate = secinfo.MaturityDate;
-            Status = secinfo.Status;
-            IssueVolume = secinfo.IssueVolume;
-            IssuerSector = secinfo.IssueSector;
+            Status = secinfo.Status.ToString();
+            IssueVolume = secinfo.MarketVolume;
+            IssuerSector = secinfo.IssuerSector.ToString();
             RiskType = riskType;
         }
 
@@ -47,7 +47,7 @@ namespace InvestmentDataModel
         public virtual ICollection<AssetEntry> Portfolio { get; set; } = null!;
         public virtual ICollection<FlowEntry> Flows { get; set; } = null!;
 
-        public static SecurityEntry New(EfirSecurity secinfo, AssetClass assetClass, RiskType riskType)
+        public static SecurityEntry New(InstrumentInfo secinfo, AssetClass assetClass, RiskType riskType)
             => new SecurityEntry(secinfo, assetClass, riskType);
     }
 }
