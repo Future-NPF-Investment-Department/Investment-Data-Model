@@ -2,14 +2,14 @@
 
 namespace InvestmentDataModel
 {
-    public abstract class InvestmentDataQueryBuilder<TData, TBuilder>
+    public abstract class InvestDataQueryBuilder<TData, TBuilder>
         where TData : InvestDataEntryBase
-        where TBuilder : InvestmentDataQueryBuilder<TData, TBuilder>
+        where TBuilder : InvestDataQueryBuilder<TData, TBuilder>
     {
         private protected InvestData _context;
         private protected IQueryable<TData> _query = null!;
 
-        private protected InvestmentDataQueryBuilder(InvestData context)
+        private protected InvestDataQueryBuilder(InvestData context)
             => _context = context;
 
         private protected abstract TBuilder Builder { get; }
@@ -31,7 +31,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithAssetManagementCompany(string? amName)
         {
             _query = (amName is not null)
-                ? _query.Where(q => q.Fund.AmName == amName)
+                ? _query.Where(q => q.AmName == amName)
                 : _query;
 
             return Builder;
@@ -40,7 +40,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithFundName(string? fundName)
         {
             _query = (fundName is not null)
-                ? _query.Where(q => q.Fund.FundName == fundName)
+                ? _query.Where(q => q.FundName == fundName)
                 : _query;
 
             return Builder;
@@ -49,7 +49,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithPensionPropertyType(PensionPropertyType? pptype)
         {
             _query = (pptype is not null)
-                ? _query.Where(q => q.Portfolio.PensionProperty == pptype)
+                ? _query.Where(q => q.PensionProperty == pptype)
                 : _query;
 
             return Builder;
@@ -58,7 +58,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithStrategy(string? strategy)
         {
             _query = (strategy is not null)
-                ? _query.Where(q => q.Portfolio.StrategyName == strategy)
+                ? _query.Where(q => q.StrategyName == strategy)
                 : _query;
 
             return Builder;
@@ -67,7 +67,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithContract(string? contract)
         {
             _query = (contract is not null)
-                ? _query.Where(q => EF.Functions.Like(q.Portfolio.Contract, contract))
+                ? _query.Where(q => EF.Functions.Like(q.Contract, contract))
                 : _query;
 
             return Builder;
@@ -76,7 +76,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithIssuerName(string? name)
         {
             _query = (name is not null)
-                ? _query.Where(q => EF.Functions.Like(q.Issuer.Name!, name))
+                ? _query.Where(q => EF.Functions.Like(q.Name!, name))
                 : _query;
 
             return Builder;
@@ -85,7 +85,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithIssuerId(string? issuerId)
         {
             _query = (issuerId is not null)
-                ? _query.Where(q => q.Issuer.Inn == issuerId)
+                ? _query.Where(q => q.Inn == issuerId)
                 : _query;
 
             return Builder;
@@ -103,7 +103,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithAssetClass(AssetClass? @class)
         {
             _query = (@class is not null)
-                ? _query.Where(q => q.Security.AssetClass == @class)
+                ? _query.Where(q => q.AssetClass == @class)
                 : _query;
 
             return Builder;
@@ -112,7 +112,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithAssetType(AssetType? type)
         {
             _query = (type is not null)
-                ? _query.Where(q => q.Security.AssetType == type)
+                ? _query.Where(q => q.AssetType == type)
                 : _query;
 
             return Builder;
@@ -121,7 +121,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithSecurityName(string? type)
         {
             _query = (type is not null)
-                ? _query.Where(q => EF.Functions.Like(q.Security.FullName!, type))
+                ? _query.Where(q => EF.Functions.Like(q.FullName!, type))
                 : _query;
 
             return Builder;
@@ -130,7 +130,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithSecurityCurrency(string? currency)
         {
             _query = (currency is not null)
-                ? _query.Where(q => q.Security.Currency == currency)
+                ? _query.Where(q => q.Currency == currency)
                 : _query;
 
             return Builder;
@@ -139,7 +139,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithRiskType(RiskType? risk)
         {
             _query = (risk is not null)
-                ? _query.Where(q => q.Security.RiskType == risk)
+                ? _query.Where(q => q.RiskType == risk)
                 : _query;
 
             return Builder;

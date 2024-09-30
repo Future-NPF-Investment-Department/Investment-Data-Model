@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace InvestmentDataModel.Model.Configurations
 {
     /// <summary>
-    ///     Configures <see cref="PriceFixationEntry"/> entity for Entity Framework.
+    ///     Configures <see cref="PriceFixationPeriod"/> entity for Entity Framework.
     /// </summary>
-    public class PriceFixationConfigurer : IEntityTypeConfiguration<PriceFixationEntry>
+    public class PriceFixationPeriodEntityConfigurer : IEntityTypeConfiguration<PriceFixationPeriod>
     {
-        public void Configure(EntityTypeBuilder<PriceFixationEntry> builder)
+        public void Configure(EntityTypeBuilder<PriceFixationPeriod> builder)
         {
             builder.ToTable("PriceFixations", "idep");
             builder.HasKey(pfi => new { pfi.FundName, pfi.FixationDate });

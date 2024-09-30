@@ -20,11 +20,11 @@ namespace InvestmentDataModel
         {
         }
 
-        public virtual DbSet<FlowEntry> Flows { get; set; } = null!;
-        public virtual DbSet<AssetEntry> Assets { get; set; }
-        public virtual DbSet<ReportSourceFile> Reports { get; set; } = null!;
-        public virtual DbSet<SecurityEntry> Securities { get; set; } = null!;
-        public virtual DbSet<PriceFixationEntry> FixationPeriods { get; set; } = null!;
+        public virtual DbSet<Flow> Flows { get; set; } = null!;
+        public virtual DbSet<NetAssetValue> Assets { get; set; }
+        public virtual DbSet<SourceFile> Reports { get; set; } = null!;
+        public virtual DbSet<Security> Securities { get; set; } = null!;
+        public virtual DbSet<PriceFixationPeriod> FixationPeriods { get; set; } = null!;
 
 
 
@@ -44,11 +44,11 @@ namespace InvestmentDataModel
                 .HasDbFunction(() => InvestDataExtensions.GetFlowDirection(default))
                 .HasSchema("idep");
 
-            modelBuilder.ApplyConfiguration(new AssetValueConfigurer());
-            modelBuilder.ApplyConfiguration(new AssetFlowConfigurer());
-            modelBuilder.ApplyConfiguration(new MarketInfoConfigurer());
-            modelBuilder.ApplyConfiguration(new PriceFixationConfigurer());
-            modelBuilder.ApplyConfiguration(new SourceFileConfigurer());
+            modelBuilder.ApplyConfiguration(new NetAssetValueEntityConfigurer());
+            modelBuilder.ApplyConfiguration(new FlowEntityConfigurer());
+            modelBuilder.ApplyConfiguration(new SecurityEntityConfigurer());
+            modelBuilder.ApplyConfiguration(new PriceFixationPeriodEntityConfigurer());
+            modelBuilder.ApplyConfiguration(new SourceFileEntityConfigurer());
         }
     }
 }

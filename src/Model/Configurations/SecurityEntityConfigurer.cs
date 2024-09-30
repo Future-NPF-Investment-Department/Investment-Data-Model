@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace InvestmentDataModel.Model.Configurations
 {
     /// <summary>
-    ///     Configures <see cref="SecurityEntry"/> entity for Entity Framework.
+    ///     Configures <see cref="Security"/> entity for Entity Framework.
     /// </summary>
-    public class MarketInfoConfigurer : IEntityTypeConfiguration<SecurityEntry>
+    public class SecurityEntityConfigurer : IEntityTypeConfiguration<Security>
     {
-        public void Configure(EntityTypeBuilder<SecurityEntry> builder)
+        public void Configure(EntityTypeBuilder<Security> builder)
         {
             builder.ToTable("Securities", "idep");
             builder.HasKey(si => si.Isin);

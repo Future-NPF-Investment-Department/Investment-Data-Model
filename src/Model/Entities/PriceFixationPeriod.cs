@@ -4,7 +4,7 @@ namespace InvestmentDataModel
     /// <summary>
     ///     Represents price fixation period information.
     /// </summary>
-    public class PriceFixationEntry
+    public class PriceFixationPeriod
     {
         /// <summary>
         ///     Name of Fund for which price fixation period exists.

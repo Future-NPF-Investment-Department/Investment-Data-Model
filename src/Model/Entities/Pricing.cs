@@ -5,9 +5,9 @@ namespace InvestmentDataModel
     ///     Asset pricing information.
     /// </summary>
     /// <remarks>
-    ///     This type is owned by <see cref="AssetEntry"/> entity type.
+    ///     This type is owned by <see cref="NetAssetValue"/> entity type.
     /// </remarks>
-    public record PricingEntry
+    public record Pricing
     {
         /// <summary>
         ///     Asset pricing type.
@@ -19,19 +19,19 @@ namespace InvestmentDataModel
         public bool UseRealPricing { get; set; }
         /// <summary>
         ///     Boolean flag to select all assets that priced at fair prices.
-        /// </summary>
+        /// </summary>0
         public bool UseFairPricing { get; set; }
 
         /// <summary>
-        ///     Defines Report specific <see cref="PricingEntry"/>.
+        ///     Defines Report specific <see cref="Pricing"/>.
         /// </summary>
         /// <param name="report">target report information.</param>
         /// <param name="priceFixationPeriods">price fixation periods.</param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static PricingEntry DefineReportPricing(ReportSourceFile report, IEnumerable<PriceFixationEntry> priceFixationPeriods)
+        public static Pricing DefineReportPricing(SourceFile report, IEnumerable<PriceFixationPeriod> priceFixationPeriods)
         {
-            PricingEntry pi = new();
+            Pricing pi = new();
 
             foreach (var period in priceFixationPeriods)
             {

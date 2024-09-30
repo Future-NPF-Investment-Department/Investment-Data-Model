@@ -10,26 +10,114 @@ namespace InvestmentDataModel
         ///     Report date.
         /// </summary>
         public abstract DateTime Date { get; set; }
+
+
+
+        /// <summary>
+        /// Name of fund.
+        /// </summary>
+        public abstract string FundName { get; set; }
+        /// <summary>
+        /// Asset management company name.
+        /// </summary>
+        public abstract string AmName { get; set; }
         /// <summary>
         ///     Information regarding the fund.
         /// </summary>
-        public abstract FundInfoEntry Fund { get; set; }
+        //public abstract FundInfoEntry Fund { get; set; }
+
+
+
         /// <summary>
-        ///      Investing portfolio Information. 
+        ///     Type of pension property.
         /// </summary>
-        public abstract PortfolioEntry Portfolio { get; set; }
+        public abstract PensionPropertyType PensionProperty { get; set; }
         /// <summary>
-        ///      Iissuer information.
+        ///     Strategy name.
         /// </summary>
-        public abstract IssuerEntry Issuer { get; set; }
+        public abstract string StrategyName { get; set; }
+        /// <summary>
+        ///     Contract ID.
+        /// </summary>
+        public abstract string Contract { get; set; }
+        /// <summary>
+        ///     Current account ID.
+        /// </summary>
+        public abstract string? RsNumber { get; set; }
+        ///// <summary>
+        /////      Investing portfolio Information. 
+        ///// </summary>
+        //public abstract PortfolioEntry Portfolio { get; set; }
+
+
+
+
+        /// <summary>
+        ///     Emitent name.
+        /// </summary>
+        public abstract string? Name { get; set; }
+        /// <summary>
+        ///     Emitent ID.
+        /// </summary>
+        public abstract string? Inn { get; set; }
+        ///// <summary>
+        /////      Iissuer information.
+        ///// </summary>
+        //public abstract IssuerEntry Issuer { get; set; }
+
+
+
         /// <summary>
         ///     ISIN code.
         /// </summary>
         public abstract string Isin { get; set; }
+
+
+
+
+
         /// <summary>
-        ///      Security Information.
+        ///     Asset class (e.g. equities, bonds, cash etc.)
         /// </summary>
-        public abstract SecurityInfoEntry Security { get; set; }
+        public abstract AssetClass AssetClass { get; set; }
+        /// <summary>
+        ///     Asset type (e.g. gov bonds, corp bonds, etc.).
+        /// </summary>
+        public abstract AssetType AssetType { get; set; }
+        /// <summary>
+        ///     Asset registration number (if any).
+        /// </summary>
+        public abstract string RegNumber { get; set; }
+        /// <summary>
+        ///     Security short name.
+        /// </summary>
+        public abstract string? ShortName { get; set; }
+        /// <summary>
+        ///     Security full name
+        /// </summary>
+        public abstract string? FullName { get; set; }
+        /// <summary>
+        ///     Risk group to which security belongs to.
+        /// </summary>
+        public abstract RiskType RiskType { get; set; }
+        /// <summary>
+        ///     Security notional.
+        /// </summary>
+        public abstract double? Notional { get; set; }
+        /// <summary>
+        ///     Currency of security's notional.
+        /// </summary>
+        public abstract string? Currency { get; set; }
+        ///// <summary>
+        /////      Security Information.
+        ///// </summary>
+        //public abstract SecurityInfoEntry Security { get; set; }
+
+
+
+
+
+
         /// <summary>
         ///     Corresponding amount. 
         /// </summary>
@@ -49,10 +137,10 @@ namespace InvestmentDataModel
         /// <summary>
         ///     Corresponding market information.
         /// </summary>
-        public abstract SecurityEntry MarketInfo { get; set; }
+        public abstract Security MarketInfo { get; set; }
         /// <summary>
         ///     Information about source file.
         /// </summary>
-        public abstract ReportSourceFile Report { get; set; }
+        public abstract SourceFile Report { get; set; }
     }
 }

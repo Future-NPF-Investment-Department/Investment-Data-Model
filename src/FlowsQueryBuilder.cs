@@ -2,7 +2,7 @@
 
 namespace InvestmentDataModel
 {
-    public class FlowsQueryBuilder : InvestmentDataQueryBuilder<FlowEntry, FlowsQueryBuilder>
+    public class FlowsQueryBuilder : InvestDataQueryBuilder<Flow, FlowsQueryBuilder>
     {
         public FlowsQueryBuilder(InvestData context) : base(context)
             => _query = _context.Flows.AsNoTracking();
