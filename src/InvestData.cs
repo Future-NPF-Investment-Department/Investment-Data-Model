@@ -5,27 +5,19 @@ namespace InvestmentDataModel
 {
     public class InvestData : DbContext
     {
-        public const string DFLTCONNSTR
-            = "Server=(localdb)\\mssqllocaldb;Database=InvestmentDataBase-Test;Trusted_Connection=True;Integrated Security=True;";
-        private readonly string? _connString;
-
-        public InvestData() : base()
-        {
-        }
+        private readonly string _connstr;
 
         public InvestData(string connString) : base()
-            => _connString = connString;
-
-        public InvestData(DbContextOptions<InvestData> options) : base(options)
         {
+            _connstr = connString;
         }
 
-        public virtual DbSet<Flow> Flows { get; set; } = null!;
+
         public virtual DbSet<NetAssetValue> Assets { get; set; }
-        public virtual DbSet<SourceFile> Reports { get; set; } = null!;
+        public virtual DbSet<Flow> Flows { get; set; } = null!;
         public virtual DbSet<Security> Securities { get; set; } = null!;
         public virtual DbSet<PriceFixationPeriod> FixationPeriods { get; set; } = null!;
-
+        public virtual DbSet<SourceFile> Reports { get; set; } = null!;
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -34,7 +26,7 @@ namespace InvestmentDataModel
             {
                 optionsBuilder
                     .UseLazyLoadingProxies()
-                    .UseSqlServer(_connString ?? DFLTCONNSTR);
+                    .UseSqlServer(_connstr);
             }
         }
 
