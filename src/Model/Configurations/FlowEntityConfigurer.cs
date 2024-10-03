@@ -1,5 +1,4 @@
-﻿using Efir.DataHub.Models.Models.Scoring;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvestmentDataModel.Model.Configurations
