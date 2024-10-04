@@ -8,15 +8,12 @@
   же таблицу SQL, но с разными флагами. Значение этих флагов зависит от значения перечисления ReportPricingType, см. ниже.
 ============================================================================================================================= */
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace InvestmentDataModel
 {
     /// <summary>
     ///     Represents pricing type of source report. 
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum ReportPricingType
     {
         RealPrices,

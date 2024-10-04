@@ -10,6 +10,5 @@ namespace InvestmentDataModel
         Fair,
         HoldToMaturity,
         Amortized,
-
     }
 }
