@@ -22,13 +22,13 @@ namespace InvestmentDataModel
 
         public AssetsQueryBuilder WithRealPrices()
         {
-            _query = _query.Where(q => q.Pricing.UseRealPricing);
+            _query = _query.Where(q => q.UseRealPricing);
             return this;
         }
 
         public AssetsQueryBuilder WithFairPrices()
         {
-            _query = _query.Where(q => q.Pricing.UseFairPricing);
+            _query = _query.Where(q => q.UseFairPricing);
             return this;
         }
     }

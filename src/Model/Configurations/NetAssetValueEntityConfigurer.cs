@@ -13,22 +13,20 @@ namespace InvestmentDataModel.Model.Configurations
             builder.ToTable("Portfolio-TEST2", "idep");
             builder.HasKey(ai => ai.LoadTime);
 
-
             builder.Property(sec => sec.AssetType)
-                .HasConversion(at => at.ToString(),
-                at => at.ToEnum<AssetType>())
-                .HasColumnName("AssetType");
+           .HasConversion(at => at.ToString(),
+           at => at.ToEnum<AssetType>())
+           .HasColumnName("AssetType");
 
             builder.Property(sec => sec.AssetClass)
-                .HasConversion(ac => ac.ToString(),
-                ac => ac.ToEnum<AssetClass>())
-                .HasColumnName("AssetClass");
-
+            .HasConversion(ac => ac.ToString(),
+            ac => ac.ToEnum<AssetClass>())
+            .HasColumnName("AssetClass");
 
             builder.Property(sec => sec.RiskType)
-                .HasConversion(ac => ac.ToString(),
-                ac => ac.ToEnum<RiskType>())
-                .HasColumnName("RiskType");
+            .HasConversion(ac => ac.ToString(),
+            ac => ac.ToEnum<RiskType>())
+            .HasColumnName("RiskType");
 
             builder.Property(sec => sec.RegNumber)
             .HasColumnName("RegNumber");
@@ -64,19 +62,16 @@ namespace InvestmentDataModel.Model.Configurations
             builder.Property(issuer => issuer.Name)
             .HasColumnName("Emitent");
 
-            builder.OwnsOne(nav => nav.Pricing, owned =>
-            {
-                owned.Property(pi => pi.PriceFixation)
-                .HasConversion(pt => pt.ToString(),
-                    str => str.ToEnum<PriceFixationKind>())
-                .HasColumnName("PriceFixation");
+            builder.Property(pi => pi.PriceFixation)
+            .HasConversion(pt => pt.ToString(),
+            str => str.ToEnum<PriceFixationKind>())
+            .HasColumnName("PriceFixation");
 
-                owned.Property(ai => ai.UseRealPricing)
-                .HasColumnName("UseRealPricing");
+            builder.Property(ai => ai.UseRealPricing)
+            .HasColumnName("UseRealPricing");
 
-                owned.Property(ai => ai.UseFairPricing)
-                .HasColumnName("UseFairPricing");
-            });
+            builder.Property(ai => ai.UseFairPricing)
+            .HasColumnName("UseFairPricing");
 
             builder.Property(ai => ai.FundName)
             .HasColumnName("FundName");

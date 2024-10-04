@@ -45,10 +45,12 @@ namespace InvestmentDataModel
         ///     Emitent name.
         /// </summary>
         public override string? Name { get; set; }
+
         /// <summary>
         ///     Emitent ID.
         /// </summary>
         public override string? Inn { get; set; }
+
 
         /// <summary>
         ///     Asset ISIN code.
@@ -154,13 +156,23 @@ namespace InvestmentDataModel
         ///     Method of accounting for particular asset.
         /// </summary>
         public AccountingMethod AccountingMethod { get; set; }
-        
+
         /// <summary>
-        ///     Report-specific pricing information for this asset.
+        ///     Asset pricing type.
         /// </summary>
-        public Pricing Pricing { get; set; } = null!;
-        
+        public PriceFixationKind PriceFixation { get; set; }
+
         /// <summary>
+        ///     Boolean flag to select all assets that priced at real prices.
+        /// </summary>
+        public bool UseRealPricing { get; set; }
+
+        /// <summary>
+        ///     Boolean flag to select all assets that priced at fair prices.
+        /// </summary>0
+        public bool UseFairPricing { get; set; }
+
+                /// <summary>
         ///     Load time (instance creation time in fact).
         /// </summary>
         public DateTime LoadTime { get; set; } = DateTime.Now;

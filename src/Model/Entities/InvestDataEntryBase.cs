@@ -10,9 +10,6 @@ namespace InvestmentDataModel
         ///     Report date.
         /// </summary>
         public abstract DateTime Date { get; set; }
-
-
-
         /// <summary>
         /// Name of fund.
         /// </summary>
@@ -21,13 +18,6 @@ namespace InvestmentDataModel
         /// Asset management company name.
         /// </summary>
         public abstract string AmName { get; set; }
-        /// <summary>
-        ///     Information regarding the fund.
-        /// </summary>
-        //public abstract FundInfoEntry Fund { get; set; }
-
-
-
         /// <summary>
         ///     Type of pension property.
         /// </summary>
@@ -44,14 +34,6 @@ namespace InvestmentDataModel
         ///     Current account ID.
         /// </summary>
         public abstract string? RsNumber { get; set; }
-        ///// <summary>
-        /////      Investing portfolio Information. 
-        ///// </summary>
-        //public abstract PortfolioEntry Portfolio { get; set; }
-
-
-
-
         /// <summary>
         ///     Emitent name.
         /// </summary>
@@ -60,22 +42,10 @@ namespace InvestmentDataModel
         ///     Emitent ID.
         /// </summary>
         public abstract string? Inn { get; set; }
-        ///// <summary>
-        /////      Iissuer information.
-        ///// </summary>
-        //public abstract IssuerEntry Issuer { get; set; }
-
-
-
         /// <summary>
         ///     ISIN code.
         /// </summary>
         public abstract string Isin { get; set; }
-
-
-
-
-
         /// <summary>
         ///     Asset class (e.g. equities, bonds, cash etc.)
         /// </summary>
@@ -108,16 +78,6 @@ namespace InvestmentDataModel
         ///     Currency of security's notional.
         /// </summary>
         public abstract string? Currency { get; set; }
-        ///// <summary>
-        /////      Security Information.
-        ///// </summary>
-        //public abstract SecurityInfoEntry Security { get; set; }
-
-
-
-
-
-
         /// <summary>
         ///     Corresponding amount. 
         /// </summary>
