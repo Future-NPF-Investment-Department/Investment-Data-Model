@@ -5,13 +5,7 @@ namespace InvestmentDataModel
 {
     public class InvestData : DbContext
     {
-        private readonly string _connstr;
-
-        public InvestData(string connString) : base()
-        {
-            _connstr = connString;
-        }
-
+        private InvestData(DbContextOptions options) : base(options) { }
 
         public virtual DbSet<NetAssetValue> Assets { get; set; }
         public virtual DbSet<Flow> Flows { get; set; } = null!;
@@ -19,15 +13,24 @@ namespace InvestmentDataModel
         public virtual DbSet<PriceFixationPeriod> FixationPeriods { get; set; } = null!;
         public virtual DbSet<SourceFile> Reports { get; set; } = null!;
 
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public static InvestData ConfigureForSQLServer(string connectionString)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder
-                    .UseLazyLoadingProxies()
-                    .UseSqlServer(_connstr);
-            }
+            var options = new DbContextOptionsBuilder<InvestData>()
+                .UseSqlServer(connectionString)
+                .UseLazyLoadingProxies()
+                .Options;
+
+            return new InvestData(options);
+        }
+
+        public static InvestData ConfigureForSQLite(string connectionString)
+        {
+            var options = new DbContextOptionsBuilder<InvestData>()
+                .UseSqlite(connectionString)
+                .UseLazyLoadingProxies()
+                .Options;
+
+            return new InvestData(options);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
