@@ -37,7 +37,7 @@ namespace InvestmentDataModel
         /// <summary>
         ///     Emitent name.
         /// </summary>
-        public abstract string? Name { get; set; }
+        public abstract string? EmitentName { get; set; }
         /// <summary>
         ///     Emitent ID.
         /// </summary>

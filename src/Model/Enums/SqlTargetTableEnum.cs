@@ -7,6 +7,10 @@ namespace InvestmentDataModel
     public enum SqlTargetTable
     {
         Portfolio,
-        Flows
+        Flows,
+        Securities,
+        FixPeriods,
+        Reports,
+        BalanceList
     }
 }

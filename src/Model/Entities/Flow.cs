@@ -44,7 +44,7 @@ namespace InvestmentDataModel
         /// <summary>
         ///     Emitent name.
         /// </summary>
-        public override string? Name { get; set; }
+        public override string? EmitentName { get; set; }
         
         /// <summary>
         ///     Emitent ID.

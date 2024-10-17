@@ -76,7 +76,7 @@ namespace InvestmentDataModel
         public virtual TBuilder WithIssuerName(string? name)
         {
             _query = (name is not null)
-                ? _query.Where(q => EF.Functions.Like(q.Name!, name))
+                ? _query.Where(q => EF.Functions.Like(q.EmitentName!, name))
                 : _query;
 
             return Builder;
